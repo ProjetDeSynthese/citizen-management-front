@@ -8,6 +8,8 @@ import { VilleComponent } from './pages/ville/ville.component';
 import { QuartierComponent } from './pages/quartier/quartier.component';
 import { SecteurComponent } from './pages/secteur/secteur.component';
 import { CommuneComponent } from './pages/commune/commune.component';
+import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
+import { AddUtilisateurComponent } from './pages/add-utilisateur/add-utilisateur.component';
 
 const routes: Routes = [
   { path: '', component: DashbaordComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'commune', component: CommuneComponent },
   { path: 'secteur', component: SecteurComponent },
   { path: 'quartier', component: QuartierComponent },
+  { path: 'user', component: UtilisateurComponent },
+  { path: 'useradd', component: AddUtilisateurComponent }
 ];
 
 @NgModule({

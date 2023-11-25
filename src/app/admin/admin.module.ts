@@ -10,6 +10,8 @@ import { DepartementComponent } from './pages/departement/departement.component'
 import { RegionComponent } from './pages/region/region.component';
 import { VilleComponent } from './pages/ville/ville.component';
 import { CommuneComponent } from './pages/commune/commune.component';
+import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
+import { AddUtilisateurComponent } from './pages/add-utilisateur/add-utilisateur.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { CommuneComponent } from './pages/commune/commune.component';
     DepartementComponent,
     RegionComponent,
     VilleComponent,
-    CommuneComponent
+    CommuneComponent,
+    UtilisateurComponent,
+    AddUtilisateurComponent
   ],
   imports: [
     CommonModule,
