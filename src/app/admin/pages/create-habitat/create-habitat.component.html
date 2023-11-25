@@ -4,26 +4,18 @@
           <nav>
                <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                    <li class="breadcrumb-item active">Liste Habitats</li>
+                    <li class="breadcrumb-item active">creer un Habitat</li>
                </ol>
           </nav>
      </div>
-     <!-- End Page Title -->
+     <div class="d-flex justify-content-center">
+          <div class="card col-9">
+               <div class="card-body">
+                    <div class="p-4">
+                         <h5 class="card-title">Nouveau Habitat</h5>
 
-     <div class="row m-0">
-          <div class="col-md-6 col-lg-3" *ngFor="let item of [1, 1, 1, 1, 1, 1, 1, 1]">
-               <div class="card">
-                    <img src="assets/templateAdmin/img/habitat.jpg" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                         <h5 class="card-title">City</h5>
-                         <p class="card-text">surperficie 12m2 2 chambres et salon et une douche</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                         <li class="list-group-item">Diamaré</li>
-                         <li class="list-group-item">Pitoare</li>
-                    </ul>
-                    <div class="card-body">
-                         <a href="#" class="card-link" routerLink="/admin/view-image-habitat" >Voir le detail</a>
+                         <!-- General Form Elements -->
+                         <app-forms-create-habitat></app-forms-create-habitat>
                     </div>
                </div>
           </div>
