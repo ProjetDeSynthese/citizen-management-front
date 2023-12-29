@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AboutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

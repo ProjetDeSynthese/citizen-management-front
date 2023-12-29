@@ -16,13 +16,14 @@ export class AppComponent {
                  const url = event.url;
 
                  // Vérifiez si l'URL correspond à la page de connexion (login)
-                 if (url.includes('auth/login')|| url.includes('**')) {
+                 if (url.includes('auth/login')|| url.includes('**') || url.includes('citoyens/home')|| url.includes('citoyens/contact') || url.includes('citoyens/room')|| url.includes('citoyens/booknow') || url.includes('citoyens/about')) {
                       // Masquer l'en-tête lorsque la navigation vers la page de connexion est détectée
                       this.isHeaderVisible = false;
-                 } else {
+                 } else  {
                       // Afficher l'en-tête pour les autres pages
                       this.isHeaderVisible = true;
                  }
+                 
             }
        });
   }
