@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
      selector: 'app-login',
@@ -13,8 +14,13 @@ export class LoginComponent {
           private authService: AuthService,
      ) {}
 
+     loginForm: FormGroup = new FormGroup({
+          username: new FormControl(null, [Validators.required]),
+          password: new FormControl(null, [Validators.required]),
+     });
+
      onSubmit() {
           // this.authService.onPostIsauth('true');
-          this.router.navigate(['/admin'])
+          this.router.navigateByUrl('/admin/useradd');
      }
 }

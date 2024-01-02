@@ -1,0 +1,278 @@
+
+<app-header></app-header>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Tous les citoyens</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">all-citizens</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+            <!-- Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Liste des citoyens <span>| Today</span></h5>
+
+                  <table class="table table-bordered datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Sexe</th>
+                        <th scope="col">Habitat</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Brandon Jacob</td>
+                        <td>ndjibe</td>
+                        <td>ndjibemelissa@gmail.com</td>
+                        <td>Feminin</td>
+                        <td>Cité Fontcha</td>
+                        <td>
+                            <span class="badge bg-success me-2" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable">
+                                <i class="fa fa-eye"></i>
+                            </span>
+                            <!-- Modal Dialog Scrollable -->
+                            <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Tous les informations de Brandon Jacob ndjibe</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered datatable">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">Items</th>
+                                                    <th scope="col">Values</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brandon Jacob</td>
+                                                    <td>ndjibe</td>
+                                                </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End Modal Dialog Scrollable-->
+
+                            <span class="badge bg-info" data-bs-toggle="modal" data-bs-target="#modalDialogScrollableedit">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                             <!-- Modal Dialog Scrollable -->
+                             <div class="modal fade" id="modalDialogScrollableedit" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Mise a jour des information de Brandon</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                                   <!-- General Form Elements -->
+              <form>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nom</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Prenom</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-2 pt-0">Sexe</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                        <label class="form-check-label" for="gridRadios1">
+                          Feminin
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label" for="gridRadios2">
+                          Masculin
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="row mb-3">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control">
+                    </div>
+                  </div>
+             
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Situation matrimoniale</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">Celibataire</option>
+                        <option value="2">Marié</option>
+                        <option value="3">Divorcer</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Phone Number</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Nationalité</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">Cameroun</option>
+                        <option value="2">Canada</option>
+                        <option value="3">Divorcer</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="row mb-3">
+                  <label for="inputTtext" class="col-sm-2 col-form-label">profession</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Numero CNI</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-5">
+                    <label class="col-sm-2 col-form-label">Habitat</label>
+                    <div class="col-sm-10">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="1">Pont rouge</option>
+                        <option value="2">Pont vert</option>
+                        <option value="3">Domayo</option>
+                      </select>
+                    </div>
+                  </div>
+
+              </form><!-- End General Form Elements -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End Modal Dialog Scrollable-->
+                        </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div><!-- End Recent Sales -->
+            <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+     
+
+      </div>
+    </section>
+
+  </main>

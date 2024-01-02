@@ -1,0 +1,201 @@
+  <!-- ======= Header ======= -->
+  <app-header></app-header>
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Utilisateurs</li>
+          </ol>
+        </nav>
+      </div>
+      <div>
+        <!-- <button type="button"  data-bs-toggle="modal" data-bs-target="#adduser" class="btn btn-primary">AJOUTER UN UTILISATEUR</button> -->
+     
+      </div>
+      <br/>
+  
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+         
+
+          <div class="card-body">
+            <h5 class="card-title"> UTILISATEURS <span>| Liste d'utilisateurs</span></h5>
+
+            <table class="table table-bordered datatable">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nom </th>
+                  <th scope="col">Prenom</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telephone</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><a href="#">1</a></th>
+                  <td>Brandon Jacob</td>
+                  <td>
+                    <a href="#" class="text-primary"
+                      >At praesentium minu</a
+                    >
+                  </td>
+                  <td>ndjibemelissa@gmail.com</td>
+                  <td>695825493</td>
+                  <td class="span">
+                    <span class="badge bg-primary"><i class="fas fa-toggle-off"></i></span>
+                    <span ></span>
+                    <span class="badge bg-info"  data-bs-toggle="modal" data-bs-target="#verticalycentered"><i class="fa fa-eye"></i></span>
+                    
+                  </td>
+                </tr> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="verticalycentered" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">INFO UTILISATEURS</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               
+
+                    <!-- Profile Edit Form -->
+                    <form>
+                     
+  
+                      <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        </div>
+                      </div>
+  
+                     
+  
+                      
+                      <div class="row mb-3">
+                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                        </div>
+                      </div>
+  
+                      <div class="row mb-3">
+                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="email" type="text" class="form-control" id="Country" value="USA">
+                        </div>
+                      </div>
+  
+                      
+  
+                      <div class="row mb-3">
+                        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                        </div>
+                      </div>
+  
+                      <div class="row mb-3">
+                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                        </div>
+                      </div>
+  
+                     
+  
+  
+                     
+  
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Save Changes</button>
+                      </div>
+                      
+                     
+                    </form><!-- End Profile Edit Form -->
+  
+                  </div>    
+           
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="adduser" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">AJOUTER UN UTILISATEUR</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                      <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="fullName" type="text" class="form-control" id="fullName" >
+                        </div>
+                      </div>
+  
+                     
+  
+                      
+                      <div class="row mb-3">
+                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="job" type="text" class="form-control" id="Job" >
+                        </div>
+                      </div>
+  
+                      <div class="row mb-3">
+                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="email" type="text" class="form-control" id="Country">
+                        </div>
+                      </div>
+  
+                      
+  
+                      <div class="row mb-3">
+                        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="phone" type="text" class="form-control" id="Phone" >
+                        </div>
+                      </div>
+  
+                      <div class="row mb-3">
+                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="email" type="email" class="form-control" id="Email" >
+                        </div>
+                      </div>
+  
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Save </button>
+                      </div>
+                      
+                     
+                    </form><!-- End Profile Edit Form -->
+  
+                  </div>    
+           
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+              <button type="button" class="btn btn-primary">enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</main>

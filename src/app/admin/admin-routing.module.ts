@@ -12,9 +12,14 @@ import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component'
 import { AddUtilisateurComponent } from './pages/add-utilisateur/add-utilisateur.component';
 import { CreateHabitatComponent } from './pages/create-habitat/create-habitat.component';
 import { ListeHabitatComponent } from './pages/liste-habitat/liste-habitat.component';
+import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.component';
+import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
      { path: '', component: DashbaordComponent },
+     { path: 'add-citoyens', component: AddCitoyensComponent },
+     { path: 'all-citoyens', component: AllCitoyensComponent },
      { path: 'all-users', component: AllUsersComponent },
      { path: 'departement', component: DepartementComponent },
      { path: 'region', component: RegionComponent },
@@ -26,6 +31,7 @@ const routes: Routes = [
      { path: 'useradd', component: AddUtilisateurComponent },
      { path: 'create-habitat', component: CreateHabitatComponent },
      { path: 'list-habitat', component: ListeHabitatComponent },
+     { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

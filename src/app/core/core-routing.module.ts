@@ -7,6 +7,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [
+     { path: 'connexion', component: LoginComponent, title: 'connexion' },
+     { path: 'registre', component: RegisterComponent, title: 'registre' },
      { path: 'button', component: ButtonComponent },
      { path: 'modal', component: ModalComponent },
      { path: 'forms', component: FormsElementsComponent },

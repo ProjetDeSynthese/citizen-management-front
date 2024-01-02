@@ -16,24 +16,32 @@ import { ListeHabitatComponent } from './pages/liste-habitat/liste-habitat.compo
 import { FormsCreateHabitatComponent } from './compoments/forms-create-habitat/forms-create-habitat.component';
 import { CreateHabitatComponent } from './pages/create-habitat/create-habitat.component';
 import { ViewDetailHabitatComponent } from './compoments/view-detail-habitat/view-detail-habitat.component';
+import { CoreModule } from "../core/core.module";
+import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.component';
+import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
-     declarations: [
-          DashbaordComponent,
-          AllUsersComponent,
-          QuartierComponent,
-          SecteurComponent,
-          DepartementComponent,
-          RegionComponent,
-          VilleComponent,
-          CommuneComponent,
-          UtilisateurComponent,
-          AddUtilisateurComponent,
-          ListeHabitatComponent,
-          FormsCreateHabitatComponent,
-          CreateHabitatComponent,
-          ViewDetailHabitatComponent,
-     ],
-     imports: [CommonModule, AdminRoutingModule],
+    declarations: [
+        DashbaordComponent,
+        AllUsersComponent,
+        QuartierComponent,
+        SecteurComponent,
+        DepartementComponent,
+        RegionComponent,
+        VilleComponent,
+        CommuneComponent,
+        UtilisateurComponent,
+        AddUtilisateurComponent,
+        ListeHabitatComponent,
+        FormsCreateHabitatComponent,
+        CreateHabitatComponent,
+        ViewDetailHabitatComponent,
+        AddCitoyensComponent,
+        AllCitoyensComponent,HeaderComponent,FooterComponent, ProfileComponent
+    ],
+    imports: [CommonModule, AdminRoutingModule, CoreModule]
 })
 export class AdminModule {}
