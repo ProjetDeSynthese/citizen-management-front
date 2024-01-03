@@ -1,6 +1,7 @@
 import { RegionService } from './../../../services/region.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr/toastr/toastr.service';
 import { Region } from 'src/app/interfaces/region';
 
 @Component({
@@ -10,15 +11,15 @@ import { Region } from 'src/app/interfaces/region';
 })
 export class RegionComponent implements OnInit {
 
-  form!:FormGroup
+  form!: FormGroup
   public regions!: Region[]
 
-  constructor(private regionService: RegionService) { }
+  constructor(private regionService: RegionService,private toastr: ToastrService) { }
   ngOnInit(): void {
     this.findAll()
     this.onForm()
   }
-  onForm(){
+  onForm() {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       code: new FormControl('', [Validators.required])
@@ -33,16 +34,24 @@ export class RegionComponent implements OnInit {
   }
 
   submit() {
-    var region :Region ={
-      code : this.form.value.code,
-      name : this.form.value.name
+    var region: Region = {
+      code: this.form.value.code,
+      name: this.form.value.name
     }
-    console.log(this.regionService.record(region).subscribe())
-    //debugger
+    this.regionService.record(region).subscribe({
+      next: data => {
+        this.toastr.success('Enregistrement effectué', 'Success');
+        this.findAll()
+      },
+      error: error => {
+        console.error('There was an error!', error);
+        //alert('Erreur  survenir')
+        this.toastr.success("Erreur d'enregistrement", 'Error');
+      }
+    });
+
   }
-
-
-
-
-
+  //debugger
 }
+
+
