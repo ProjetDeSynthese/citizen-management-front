@@ -1,15 +1,27 @@
-
 //   #map {
 //     width: 100%;
 //     padding: 0;
 //   }
 
-  .map {
-    height: 100%;
-    padding: 0;
-  }
+// .map {
+//   height: 100%;
+//   padding: 0;
+// }
 
-  #map {
-    height: 100%;
-    background-repeat: no-repeat;
-  }
+// #map {
+//   height: 100%;
+//   background-repeat: no-repeat;
+// }
+
+.map-frame {
+     border: 2px solid black;
+     height: 100%;
+}
+
+#map {
+     height: 100%;
+}
+
+.bd {
+    //  border: 2px solid blue;
+}
