@@ -2,7 +2,7 @@ export const environment = {};
 
 export const baseURL = 'http://localhost:8080';
 
-export const apiURL = `${baseURL}/api/v1/`;
+export const apiURL = `${baseURL}/api/`;
 
 export const routesApi = {
     REGION: {
