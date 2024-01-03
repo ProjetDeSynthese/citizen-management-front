@@ -41,8 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         CreateHabitatComponent,
         ViewDetailHabitatComponent,
         AddCitoyensComponent,
-        AllCitoyensComponent,HeaderComponent,FooterComponent, ProfileComponent
+        AllCitoyensComponent, HeaderComponent, FooterComponent, ProfileComponent
     ],
-    imports: [CommonModule, AdminRoutingModule, CoreModule,ReactiveFormsModule]
+    imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule]
 })
-export class AdminModule {}
+export class AdminModule { }

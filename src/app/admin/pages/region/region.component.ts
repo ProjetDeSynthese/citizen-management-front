@@ -14,7 +14,8 @@ export class RegionComponent implements OnInit {
   form!: FormGroup
   public regions!: Region[]
 
-  constructor(private regionService: RegionService,private toastr: ToastrService) { }
+  //constructor(private regionService: RegionService,private toastr: ToastrService) { }
+  constructor(private regionService: RegionService) { }
   ngOnInit(): void {
     this.findAll()
     this.onForm()
@@ -40,13 +41,13 @@ export class RegionComponent implements OnInit {
     }
     this.regionService.record(region).subscribe({
       next: data => {
-        this.toastr.success('Enregistrement effectué', 'Success');
+       // this.toastr.success('Enregistrement effectué', 'Success');
         this.findAll()
       },
       error: error => {
         console.error('There was an error!', error);
         //alert('Erreur  survenir')
-        this.toastr.success("Erreur d'enregistrement", 'Error');
+      //  this.toastr.success("Erreur d'enregistrement", 'Error');
       }
     });
 
