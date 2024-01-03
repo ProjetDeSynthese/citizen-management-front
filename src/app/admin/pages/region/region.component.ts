@@ -10,15 +10,19 @@ import { Region } from 'src/app/interfaces/region';
 })
 export class RegionComponent implements OnInit {
 
-  form = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    code: new FormControl('', [Validators.required])
-  })
+  form!:FormGroup
   public regions!: Region[]
 
   constructor(private regionService: RegionService) { }
   ngOnInit(): void {
     this.findAll()
+    this.onForm()
+  }
+  onForm(){
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      code: new FormControl('', [Validators.required])
+    })
   }
 
   public findAll() {
@@ -29,7 +33,12 @@ export class RegionComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value)
+    var region :Region ={
+      code : this.form.value.code,
+      name : this.form.value.name
+    }
+    console.log(this.regionService.record(region).subscribe())
+    //debugger
   }
 
 

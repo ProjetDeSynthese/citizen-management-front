@@ -22,6 +22,7 @@ import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.componen
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
         AddCitoyensComponent,
         AllCitoyensComponent,HeaderComponent,FooterComponent, ProfileComponent
     ],
-    imports: [CommonModule, AdminRoutingModule, CoreModule]
+    imports: [CommonModule, AdminRoutingModule, CoreModule,ReactiveFormsModule]
 })
 export class AdminModule {}
