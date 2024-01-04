@@ -20,4 +20,7 @@ export class RegionService {
   public findAll() : Observable<Region[]>{
     return this.http.get<Region[]>(this.API_URL.FIND_ALL)
   }
+  public delete(id:String){
+    return this.http.delete(this.API_URL.REMOVE+id)
+  }
 }

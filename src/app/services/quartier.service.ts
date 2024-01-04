@@ -20,4 +20,7 @@ export class QuartierService {
   public findAll() : Observable<Quartier[]>{
     return this.http.get<Quartier[]>(this.API_URL.FIND_ALL)
   }
+  public delete(id:String){
+    return this.http.delete(this.API_URL.REMOVE+id)
+  }
 }

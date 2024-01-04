@@ -38,8 +38,8 @@
                                              </thead>
                                              <tbody>
                                                   <tr *ngFor="let departementIten of allDepartement; let i = index">
-                                                       <td scope="col">{{i}}</td>
-                                                       <td scope="col">{{ departementIten.region }}</td>
+                                                       <td scope="col">{{i+1}}</td>
+                                                       <td scope="col">{{ departementIten.region.name }}</td>
                                                        <td scope="col">{{ departementIten.name }}</td>
                                                        <td scope="col">
                                                             <button type="button" class="btn btn-primary rounded-pill">

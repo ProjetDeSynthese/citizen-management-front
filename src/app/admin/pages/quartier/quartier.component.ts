@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Quartier } from 'src/app/interfaces/quartier';
 import { CommuneService } from 'src/app/services/commune.service';
@@ -18,7 +18,7 @@ export class QuartierComponent implements OnInit {
 
      constructor(
           private communeService: CommuneService,
-          private toastr: ToastrService,
+         // private toastr: ToastrService,
           private quartierService: QuartierService,
      ) {}
 
@@ -32,23 +32,31 @@ export class QuartierComponent implements OnInit {
           this.form = new FormGroup({
                name: new FormControl('', [Validators.required]),
                commune: new FormControl('', [Validators.required]),
+               code: new FormControl('', [Validators.required]),
           });
      }
 
      submit() {
-          var quartier: Quartier = {
-               name: this.form.value.name,
-               commune: this.form.value.commune,
-          };
-          this.quartierService.record(quartier).subscribe({
-               next: data => {
-                    this.toastr.success('Enregistrement effectué', 'Success');
-                    this.onGetQuartier();
-               },
-               error: error => {
-                    this.toastr.error("Erreur d'enregistrement", 'Error');
-               },
-          });
+          const commune = this.findCommune(this.form.value.commune)
+          if (commune){
+               var quartier: Quartier = {
+                    name: this.form.value.name,
+                    code: this.form.value.code,
+                    commune: commune,
+               };
+               console.log(quartier)
+                this.quartierService.record(quartier).subscribe({
+                    next: data => {
+                        // this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetQuartier();
+                    },
+                    error: error => {
+                      //   this.toastr.error("Erreur d'enregistrement", 'Error');
+                    },
+               }); 
+
+          }
+         
      }
 
      onGetQuartier() {
@@ -65,5 +73,9 @@ export class QuartierComponent implements OnInit {
                     this.allCommunes = res;
                },
           });
+     }
+
+     findCommune(id: String) {
+          return this.allCommunes.find(communeIten => id === communeIten.id)
      }
 }

@@ -9,7 +9,7 @@ import { routesApi } from '../core/config';
 })
 export class DepartementService {
 
-  readonly API_URL = routesApi.COMMUNE
+  readonly API_URL = routesApi.DEPARTEMENT
   constructor(private http: HttpClient) { }
 
 
@@ -19,5 +19,8 @@ export class DepartementService {
 
   public findAll() : Observable<Departement[]>{
     return this.http.get<Departement[]>(this.API_URL.FIND_ALL)
+  }
+  public delete(id:String){
+    return this.http.delete(this.API_URL.REMOVE+id)
   }
 }

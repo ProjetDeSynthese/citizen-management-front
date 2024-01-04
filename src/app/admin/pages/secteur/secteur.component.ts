@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Quartier } from 'src/app/interfaces/quartier';
 import { Secteur } from 'src/app/interfaces/secteur';
@@ -20,7 +20,7 @@ export class SecteurComponent implements OnInit {
 
      constructor(
           private secteurSevce: SecteurService,
-          private toastr: ToastrService,
+          //private toastr: ToastrService,
           private quartierService: QuartierService,
      ) {}
 
@@ -34,23 +34,32 @@ export class SecteurComponent implements OnInit {
           this.form = new FormGroup({
                name: new FormControl('', [Validators.required]),
                quartier: new FormControl('', [Validators.required]),
+               code: new FormControl('', [Validators.required]),
           });
      }
 
      submit() {
-          var secteur: Secteur = {
-               name: this.form.value.name,
-               quartier: this.form.value.quartier,
-          };
-          this.secteurSevce.record(secteur).subscribe({
-               next: data => {
-                    this.toastr.success('Enregistrement effectué', 'Success');
-                    this.onGetSecteur();
-               },
-               error: error => {
-                    this.toastr.error("Erreur d'enregistrement", 'Error');
-               },
-          });
+
+          const quartier = this.findQuartier(this.form.value.quartier)
+
+          if(quartier)
+          {
+               var secteur: Secteur = {
+                    name: this.form.value.name,
+                    code: this.form.value.code,
+                    quartier: quartier,
+               };
+               this.secteurSevce.record(secteur).subscribe({
+                    next: data => {
+                         //this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetSecteur();
+                    },
+                    error: error => {
+                         //this.toastr.error("Erreur d'enregistrement", 'Error');
+                    },
+               });
+          }
+          
      }
 
      onGetQuartier() {
@@ -67,5 +76,9 @@ export class SecteurComponent implements OnInit {
                     this.allSecteurs = res;
                },
           });
+     }
+
+     findQuartier(id: String) {
+          return this.allQuatier.find(quartierIten => id === quartierIten.id)
      }
 }

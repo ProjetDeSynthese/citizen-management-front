@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Habitat } from '../interfaces/habitat';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { routesApi } from 'src/environments/environment';
+import { routesApi } from '../core/config';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,8 @@ export class HabitatService {
 
   public findAll() : Observable<Habitat[]>{
     return this.http.get<Habitat[]>(this.API_URL.FIND_ALL)
+  }
+  public delete(id:String){
+    return this.http.delete(this.API_URL.REMOVE+id)
   }
 }
