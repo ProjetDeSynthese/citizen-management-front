@@ -21,4 +21,7 @@ export class CitoyenService {
   public findAll() : Observable<Citoyen[]>{
     return this.http.get<Citoyen[]>(this.API_URL.FIND_ALL)
   }
+  public delete(id:String){
+    return this.http.delete(this.API_URL.REMOVE+id)
+  }
 }

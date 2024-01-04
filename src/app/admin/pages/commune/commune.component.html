@@ -38,15 +38,15 @@
                                              </thead>
                                              <tbody>
                                                 <tr *ngFor="let communeIten of allCommunes; let i = index">
-                                                    <td scope="col">{{i}}</td>
-                                                       <td scope="col">{{communeIten.ville}}</td>
+                                                    <td scope="col">{{i+1}}</td>
+                                                       <td scope="col">{{communeIten.ville.name}}</td>
                                                        <td scope="col">{{communeIten.name}}</td>
                                                        <td scope="col">
                                                             <button type="button" class="btn btn-primary rounded-pill">
                                                                  <i class="bi bi-pencil-square"></i>
                                                             </button>
                                                             &nbsp;
-                                                            <button type="button" class="btn btn-danger rounded-pill">
+                                                            <button type="button" class="btn btn-danger rounded-pill" (click)="remove(communeIten.id)">
                                                                  <i class="bi bi-trash"></i>
                                                             </button>
                                                        </td>

@@ -18,4 +18,8 @@ export class VilleService {
      public findAll(): Observable<Ville[]> {
           return this.http.get<Ville[]>(this.API_URL.FIND_ALL);
      }
+
+     public delete(id:String){
+          return this.http.delete(this.API_URL.REMOVE+id)
+        }
 }

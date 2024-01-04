@@ -38,15 +38,15 @@
                                              </thead>
                                              <tbody>
                                                   <tr *ngFor="let quartierIten of allQuatier; let i = index">
-                                                       <td scope="col">{{i}}</td>
-                                                       <td scope="col">{{ quartierIten.commune }}</td>
+                                                       <td scope="col">{{i+1}}</td>
+                                                       <td scope="col">{{ quartierIten.commune.name }}</td>
                                                        <td scope="col">{{ quartierIten.name }}</td>
                                                        <td scope="col">
                                                             <button type="button" class="btn btn-primary rounded-pill">
                                                                  <i class="bi bi-pencil-square"></i>
                                                             </button>
                                                             &nbsp;
-                                                            <button type="button" class="btn btn-danger rounded-pill">
+                                                            <button type="button" class="btn btn-danger rounded-pill" (click)="remove(quartierIten.id)">
                                                                  <i class="bi bi-trash"></i>
                                                             </button>
                                                        </td>
@@ -79,9 +79,15 @@
                                    </select>
                               </div>
                               <div class="row mb-3">
-                                   <label for="inputNumber" class="col-sm-2 col-form-label" formControlName="name">nom</label>
+                                   <label for="inputNumber" class="col-sm-2 col-form-label" >nom</label>
                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" />
+                                        <input type="text" class="form-control" formControlName="name"/>
+                                   </div>
+                              </div>
+                              <div class="row mb-3">
+                                   <label for="inputNumber" class="col-sm-2 col-form-label">Code</label>
+                                   <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="code" />
                                    </div>
                               </div>
                          </div>
