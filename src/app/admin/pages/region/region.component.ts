@@ -11,6 +11,7 @@ import { Region } from 'src/app/interfaces/region';
 })
 export class RegionComponent implements OnInit {
 
+
   form!: FormGroup
   public regions!: Region[]
 
@@ -24,6 +25,20 @@ export class RegionComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       code: new FormControl('', [Validators.required])
     })
+  }
+
+  remove(arg: string | undefined) {
+    if (arg)
+      this.regionService.delete(arg).subscribe({
+        next: data => {
+          //   this.toastr.success('Enregistrement effectué', 'Success');
+        this.findAll()
+        },
+        error: err => {
+          console.error('There was an error!', err);
+          // this.toastr.error("Erreur d'enregistrement", 'Error');
+        }
+      })
   }
 
   public findAll() {
@@ -40,7 +55,7 @@ export class RegionComponent implements OnInit {
     }
     this.regionService.record(region).subscribe({
       next: data => {
-     //   this.toastr.success('Enregistrement effectué', 'Success');
+        //   this.toastr.success('Enregistrement effectué', 'Success');
         this.findAll()
       },
       error: error => {

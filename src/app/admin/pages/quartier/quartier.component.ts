@@ -36,6 +36,19 @@ export class QuartierComponent implements OnInit {
           });
      }
 
+     remove(arg: string | undefined) {
+          if (arg)
+               this.quartierService.delete(arg).subscribe({
+                    next: data => {
+                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetQuartier()
+                    },
+                    error: err => {
+                         console.error('There was an error!', err);
+                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                    }
+               })
+     }
      submit() {
           const commune = this.findCommune(this.form.value.commune)
           if (commune){

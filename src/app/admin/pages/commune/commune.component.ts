@@ -36,10 +36,19 @@ export class CommuneComponent implements OnInit {
                code: new FormControl('', [Validators.required]),
           });
      }
-     remove(arg: string| undefined) {
-          alert(arg)
-
-    }
+     remove(arg: string | undefined) {
+          if (arg)
+               this.communeService.delete(arg).subscribe({
+                    next: data => {
+                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetCommune()
+                    },
+                    error: err => {
+                         console.error('There was an error!', err);
+                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                    }
+               })
+     }
 
      submit() {
           const ville = this.findVille(this.form.value.ville)

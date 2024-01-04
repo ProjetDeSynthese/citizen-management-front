@@ -22,7 +22,7 @@ export class SecteurComponent implements OnInit {
           private secteurSevce: SecteurService,
           //private toastr: ToastrService,
           private quartierService: QuartierService,
-     ) {}
+     ) { }
 
      ngOnInit(): void {
           this.onGetQuartier();
@@ -42,8 +42,7 @@ export class SecteurComponent implements OnInit {
 
           const quartier = this.findQuartier(this.form.value.quartier)
 
-          if(quartier)
-          {
+          if (quartier) {
                var secteur: Secteur = {
                     name: this.form.value.name,
                     code: this.form.value.code,
@@ -59,7 +58,7 @@ export class SecteurComponent implements OnInit {
                     },
                });
           }
-          
+
      }
 
      onGetQuartier() {
@@ -76,6 +75,20 @@ export class SecteurComponent implements OnInit {
                     this.allSecteurs = res;
                },
           });
+     }
+
+     remove(arg: string | undefined) {
+          if (arg)
+               this.secteurSevce.delete(arg).subscribe({
+                    next: data => {
+                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetSecteur()
+                    },
+                    error: err => {
+                         console.error('There was an error!', err);
+                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                    }
+               })
      }
 
      findQuartier(id: String) {

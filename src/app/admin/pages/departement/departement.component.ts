@@ -61,6 +61,19 @@ export class DepartementComponent implements OnInit {
           }
 
      }
+     remove(arg: string | undefined) {
+          if (arg)
+               this.departementService.delete(arg).subscribe({
+                    next: data => {
+                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetDepartement()
+                    },
+                    error: err => {
+                         console.error('There was an error!', err);
+                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                    }
+               })
+     }
 
      onGetRegion() {
           this.regionService.findAll().subscribe({
