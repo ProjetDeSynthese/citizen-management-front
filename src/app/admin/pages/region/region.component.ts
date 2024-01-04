@@ -1,7 +1,6 @@
 import { RegionService } from './../../../services/region.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr/toastr/toastr.service';
 import { Region } from 'src/app/interfaces/region';
 
 @Component({
@@ -14,7 +13,6 @@ export class RegionComponent implements OnInit {
   form!: FormGroup
   public regions!: Region[]
 
-  //constructor(private regionService: RegionService,private toastr: ToastrService) { }
   constructor(private regionService: RegionService) { }
   ngOnInit(): void {
     this.findAll()
@@ -41,13 +39,11 @@ export class RegionComponent implements OnInit {
     }
     this.regionService.record(region).subscribe({
       next: data => {
-       // this.toastr.success('Enregistrement effectué', 'Success');
         this.findAll()
       },
       error: error => {
         console.error('There was an error!', error);
         //alert('Erreur  survenir')
-      //  this.toastr.success("Erreur d'enregistrement", 'Error');
       }
     });
 
