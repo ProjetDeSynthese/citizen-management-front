@@ -2,7 +2,7 @@ import { Commune } from './../interfaces/commune';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { routesApi } from 'src/environments/environment';
+import { routesApi } from '../core/config';
 
 @Injectable({
   providedIn: 'root'

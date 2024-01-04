@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Quartier } from '../interfaces/quartier';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { routesApi } from 'src/environments/environment';
+import { routesApi } from '../core/config';
 
 @Injectable({
   providedIn: 'root'
