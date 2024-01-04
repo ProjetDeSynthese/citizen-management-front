@@ -13,6 +13,7 @@ export class RegionComponent implements OnInit {
 
   form!: FormGroup
   public regions!: Region[]
+  
 
   constructor(private regionService: RegionService,private toastr: ToastrService) { }
   ngOnInit(): void {
