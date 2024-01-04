@@ -23,6 +23,8 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
 
 @NgModule({
     declarations: [
@@ -43,6 +45,9 @@ import { ReactiveFormsModule } from '@angular/forms';
         AddCitoyensComponent,
         AllCitoyensComponent, HeaderComponent, FooterComponent, ProfileComponent
     ],
-    imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule]
+    imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule,
+    ]
+
+    
 })
 export class AdminModule { }

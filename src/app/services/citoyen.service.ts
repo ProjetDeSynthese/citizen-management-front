@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { routesApi } from 'src/environments/environment';
 import { Citoyen } from '../interfaces/citoyen';
 import { Observable } from 'rxjs';
+import { routesApi } from '../core/config';
+
 
 @Injectable({
   providedIn: 'root'

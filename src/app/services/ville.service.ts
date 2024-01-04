@@ -1,23 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { routesApi } from 'src/environments/environment';
 import { Ville } from '../interfaces/ville';
+import { routesApi } from '../core/config';
 
 @Injectable({
-  providedIn: 'root'
+     providedIn: 'root',
 })
 export class VilleService {
+     readonly API_URL = routesApi.VILLE;
+     constructor(private http: HttpClient) {}
 
-  readonly API_URL = routesApi.VILLE
-  constructor(private http: HttpClient) { }
+     public record(data: Ville) {
+          return this.http.post(this.API_URL.SAVE, data);
+     }
 
-
-  public record(data :Ville){
-    return this.http.post(this.API_URL.SAVE,data) 
-  }
-
-  public findAll() : Observable<Ville[]>{
-    return this.http.get<Ville[]>(this.API_URL.FIND_ALL)
-  }
+     public findAll(): Observable<Ville[]> {
+          return this.http.get<Ville[]>(this.API_URL.FIND_ALL);
+     }
 }
