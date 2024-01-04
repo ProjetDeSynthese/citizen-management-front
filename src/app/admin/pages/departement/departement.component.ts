@@ -18,7 +18,7 @@ export class DepartementComponent implements OnInit {
 
      constructor(
           private departementService: DepartementService,
-        //  private toastr: ToastrService,
+         private toastr: ToastrService,
           private regionService: RegionService,
      ) {}
 
@@ -49,13 +49,12 @@ export class DepartementComponent implements OnInit {
                
           this.departementService.record(departement).subscribe({
                next: data => {
-                  //  this.toastr.success('Enregistrement effectué', 'Success');
+                   this.toastr.success('Enregistrement effectué', 'Success');
                     this.onGetDepartement();
                },
                error: error => {
                     console.error('There was an error!', error);
-                    //alert('Erreur  survenue')
-                    //this.toastr.error("Erreur d'enregistrement", 'Error');
+                    this.toastr.error("Erreur d'enregistrement", 'Error');
                },
           });
           }
@@ -65,12 +64,12 @@ export class DepartementComponent implements OnInit {
           if (arg)
                this.departementService.delete(arg).subscribe({
                     next: data => {
-                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                           this.toastr.success('Enregistrement effectué', 'Success');
                          this.onGetDepartement()
                     },
                     error: err => {
                          console.error('There was an error!', err);
-                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
                     }
                })
      }
