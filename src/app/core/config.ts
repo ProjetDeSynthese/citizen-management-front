@@ -80,4 +80,11 @@ export const routesApi = {
           FIND_BY_ID: apiURL + 'typeHabitat/',
           UPDATE: apiURL + 'typeHabitat/',
      },
+     User: {
+          FIND_ALL: apiURL + 'user/',
+          SAVE: apiURL + 'user/',
+          REMOVE: apiURL + 'user/',
+          FIND_BY_ID: apiURL + 'user/',
+          UPDATE: apiURL + 'user/',
+     },
 };
