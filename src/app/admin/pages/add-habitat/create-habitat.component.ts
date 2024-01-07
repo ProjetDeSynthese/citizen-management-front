@@ -19,6 +19,8 @@ import { VilleService } from 'src/app/services/ville.service';
      styleUrls: ['./create-habitat.component.scss'],
 })
 export class CreateHabitatComponent implements OnInit {
+     selectedFile: File | null = null;
+     selectedFileSrc!: string;
      allRegion!: Region[];
      allDepart!: Departement[];
      allVille!: Ville[];
@@ -58,7 +60,7 @@ export class CreateHabitatComponent implements OnInit {
 
      onRegion() {
           this.regionService.findAll().subscribe(data => {
-            debugger
+               debugger;
                this.allRegion = data;
           });
      }
