@@ -1,7 +1,7 @@
 import { Region } from "./region"
 
 export interface Departement {
-    id ? : string
+    id ? : string,
     name : string,
     code : string,
     region :  Region

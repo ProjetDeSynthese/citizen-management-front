@@ -3,6 +3,7 @@ import { Quartier } from '../interfaces/quartier';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { routesApi } from '../core/config';
+import { Secteur } from '../interfaces/secteur';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,12 @@ export class QuartierService {
   public findAll() : Observable<Quartier[]>{
     return this.http.get<Quartier[]>(this.API_URL.FIND_ALL)
   }
+ 
   public delete(id:String){
     return this.http.delete(this.API_URL.REMOVE+id)
   }
+
+  public getAllQuartier(id:String): Observable<Secteur[]> {
+    return this.http.get<Secteur[]>(this.API_URL.FIND_SECTEUR+id);
+}
 }

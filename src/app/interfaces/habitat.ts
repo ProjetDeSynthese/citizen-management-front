@@ -1,4 +1,5 @@
 import { Secteur } from "./secteur";
+import { TypeHabitat } from "./type-habitat";
 
 export interface Habitat {
 
@@ -8,5 +9,6 @@ export interface Habitat {
       latitude : DoubleRange,
       longitude :DoubleRange,
       secteur : Secteur,
-      image: String []
+      image: String [],
+      typeHabitat : TypeHabitat
 }

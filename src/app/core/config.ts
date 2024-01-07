@@ -1,5 +1,5 @@
-// export const baseURL = 'http://localhost:8080';
-export const baseURL = 'http://192.168.116.4:8080';
+ export const baseURL = 'http://localhost:8080';
+//export const baseURL = 'http://192.168.116.4:8080';
 
 
 
@@ -12,6 +12,8 @@ export const routesApi = {
           REMOVE: apiURL + 'region/',
           FIND_BY_ID: apiURL + 'region/',
           UPDATE: apiURL + 'region/',
+          FIND_DEPARTEMENT: apiURL + 'departement/findByRegion/',
+
      },
      DEPARTEMENT: {
           FIND_ALL: apiURL + 'departement/',
@@ -19,6 +21,9 @@ export const routesApi = {
           REMOVE: apiURL + 'departement/',
           FIND_BY_ID: apiURL + 'departement/',
           UPDATE: apiURL + 'departement/',
+          FIND_VILLE: apiURL + 'ville/findByDepartement/',
+
+
      },
      COMMUNE: {
           FIND_ALL: apiURL + 'commune/',
@@ -26,6 +31,8 @@ export const routesApi = {
           REMOVE: apiURL + 'commune/',
           FIND_BY_ID: apiURL + 'commune/',
           UPDATE: apiURL + 'commune/',
+          FIND_QUARTIER: apiURL + 'quartier/findByCommune/',
+
      },
      VILLE: {
           FIND_ALL: apiURL + 'ville/',
@@ -33,6 +40,8 @@ export const routesApi = {
           REMOVE: apiURL + 'ville/',
           FIND_BY_ID: apiURL + 'ville/',
           UPDATE: apiURL + 'ville/',
+          FIND_COMMUNE: apiURL + 'commune/findByVille/',
+
      },
      CITOYEN: {
           FIND_ALL: apiURL + 'citoyen/',
@@ -54,6 +63,8 @@ export const routesApi = {
           REMOVE: apiURL + 'quartier/',
           FIND_BY_ID: apiURL + 'quartier/',
           UPDATE: apiURL + 'quartier/',
+          FIND_SECTEUR: apiURL + 'secteur/findByQuartier/',
+
      },
      SECTEUR: {
           FIND_ALL: apiURL + 'secteur/',
@@ -61,5 +72,12 @@ export const routesApi = {
           REMOVE: apiURL + 'secteur/',
           FIND_BY_ID: apiURL + 'secteur/',
           UPDATE: apiURL + 'secteur/',
+     },
+     TYPE_HABITAT: {
+          FIND_ALL: apiURL + 'typeHabitat/',
+          SAVE: apiURL + 'typeHabitat/',
+          REMOVE: apiURL + 'typeHabitat/',
+          FIND_BY_ID: apiURL + 'typeHabitat/',
+          UPDATE: apiURL + 'typeHabitat/',
      },
 };

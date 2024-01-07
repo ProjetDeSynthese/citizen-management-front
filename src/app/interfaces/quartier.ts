@@ -1,7 +1,7 @@
 import { Commune } from "./commune";
 
 export interface Quartier {
-    id ? : string
+    id ? : string,
     name : string,
     code : string,
     commune : Commune,

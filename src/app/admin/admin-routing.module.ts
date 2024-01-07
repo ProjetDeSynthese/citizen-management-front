@@ -15,6 +15,7 @@ import { ListeHabitatComponent } from './pages/liste-habitat/liste-habitat.compo
 import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.component';
 import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
 
 const routes: Routes = [
      { path: '', component: DashbaordComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
      { path: 'create-habitat', component: CreateHabitatComponent },
      { path: 'list-habitat', component: ListeHabitatComponent },
      { path: 'profile', component: ProfileComponent },
+     { path: 'type-habitat', component: TypeHabitatComponent },
 ];
 
 @NgModule({

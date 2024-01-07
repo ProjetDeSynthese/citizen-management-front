@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { routesApi } from '../core/config';
+import { Quartier } from '../interfaces/quartier';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class CommuneService {
   public findAll() : Observable<Commune[]>{
     return this.http.get<Commune[]>(this.API_URL.FIND_ALL)
   }
+ 
   public delete(id:String){
     return this.http.delete(this.API_URL.REMOVE+id)
+  }
+  public getAllCommune(id:String) : Observable<Quartier[]>{
+    return this.http.get<Quartier[]>(this.API_URL.FIND_QUARTIER+id)
   }
 }
