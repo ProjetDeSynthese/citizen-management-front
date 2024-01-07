@@ -10,7 +10,7 @@ import { SecteurComponent } from './pages/secteur/secteur.component';
 import { CommuneComponent } from './pages/commune/commune.component';
 import { UtilisateurComponent } from './pages/utilisateur/utilisateur.component';
 import { AddUtilisateurComponent } from './pages/add-utilisateur/add-utilisateur.component';
-import { CreateHabitatComponent } from './pages/create-habitat/create-habitat.component';
+import { CreateHabitatComponent } from './pages/add-habitat/create-habitat.component';
 import { ListeHabitatComponent } from './pages/liste-habitat/liste-habitat.component';
 import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.component';
 import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
