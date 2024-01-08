@@ -36,7 +36,7 @@ export class AddUtilisateurComponent implements OnInit {
         username: this.form.value.email,
         password : this.form.value.name,
         role: this.form.value.role,
-        status : "INACTIVE"
+        status : "ACTIVE"
 
       }
 
