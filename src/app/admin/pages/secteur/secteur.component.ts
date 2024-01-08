@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Quartier } from 'src/app/interfaces/quartier';
@@ -20,7 +21,7 @@ export class SecteurComponent implements OnInit {
 
      constructor(
           private secteurSevce: SecteurService,
-          //private toastr: ToastrService,
+          private toastr: ToastrService,
           private quartierService: QuartierService,
      ) { }
 
@@ -50,11 +51,12 @@ export class SecteurComponent implements OnInit {
                };
                this.secteurSevce.record(secteur).subscribe({
                     next: data => {
-                         //this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Enregistrement effectué', 'Success');
                          this.onGetSecteur();
+                         this.form.reset()
                     },
                     error: error => {
-                         //this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
                     },
                });
           }
@@ -81,12 +83,12 @@ export class SecteurComponent implements OnInit {
           if (arg)
                this.secteurSevce.delete(arg).subscribe({
                     next: data => {
-                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Supression effectuée', 'Success');
                          this.onGetSecteur()
+                         this.form.reset()
                     },
                     error: err => {
-                         console.error('There was an error!', err);
-                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'supression", 'Error');
                     }
                })
      }

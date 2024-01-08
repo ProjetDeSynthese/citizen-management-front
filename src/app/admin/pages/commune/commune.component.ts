@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Ville } from 'src/app/interfaces/ville';
 import { CommuneService } from 'src/app/services/commune.service';
@@ -19,7 +19,7 @@ export class CommuneComponent implements OnInit {
 
      constructor(
           private communeService: CommuneService,
-          // private toastr: ToastrService,
+          private toastr: ToastrService,
           private villeService: VilleService,
      ) { }
 
@@ -40,12 +40,11 @@ export class CommuneComponent implements OnInit {
           if (arg)
                this.communeService.delete(arg).subscribe({
                     next: data => {
-                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Suppresion effectuée', 'Success');
                          this.onGetCommune()
                     },
                     error: err => {
-                         console.error('There was an error!', err);
-                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
                     }
                })
      }
@@ -61,11 +60,13 @@ export class CommuneComponent implements OnInit {
                };
                this.communeService.record(commune).subscribe({
                     next: data => {
-                         // this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Enregistrement effectué', 'Success');
                          this.onGetCommune();
+                         this.form.reset()
                     },
                     error: error => {
-                         //this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.form.reset()
                     },
                });
           }

@@ -18,9 +18,9 @@ export class DepartementComponent implements OnInit {
 
      constructor(
           private departementService: DepartementService,
-         private toastr: ToastrService,
+          private toastr: ToastrService,
           private regionService: RegionService,
-     ) {}
+     ) { }
 
      ngOnInit(): void {
           this.onForm();
@@ -38,25 +38,24 @@ export class DepartementComponent implements OnInit {
 
      submit() {
 
-          //console.log(this.findRegion(this.form.value.region))
           const region = this.findRegion(this.form.value.region)
-          if (region){
+          if (region) {
                var departement: Departement = {
                     code: this.form.value.code,
                     name: this.form.value.name,
                     region: region,
                };
-               
-          this.departementService.record(departement).subscribe({
-               next: data => {
-                   this.toastr.success('Enregistrement effectué', 'Success');
-                    this.onGetDepartement();
-               },
-               error: error => {
-                    console.error('There was an error!', error);
-                    this.toastr.error("Erreur d'enregistrement", 'Error');
-               },
-          });
+
+               this.departementService.record(departement).subscribe({
+                    next: data => {
+                         this.toastr.success('Enregistrement effectué', 'Success');
+                         this.onGetDepartement();
+                         this.form.reset()
+                    },
+                    error: error => {
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
+                    },
+               });
           }
 
      }
@@ -64,12 +63,11 @@ export class DepartementComponent implements OnInit {
           if (arg)
                this.departementService.delete(arg).subscribe({
                     next: data => {
-                           this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Suppresion effectuée', 'Success');
                          this.onGetDepartement()
                     },
                     error: err => {
-                         console.error('There was an error!', err);
-                         this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'suppresion", 'Error');
                     }
                })
      }
@@ -90,7 +88,7 @@ export class DepartementComponent implements OnInit {
           });
      }
 
-     findRegion(id:String){
-          return  this.allRegion.find(regionIten =>id === regionIten.id )
+     findRegion(id: String) {
+          return this.allRegion.find(regionIten => id === regionIten.id)
      }
 }

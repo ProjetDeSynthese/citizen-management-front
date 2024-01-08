@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 //import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/interfaces/departement';
 import { Ville } from 'src/app/interfaces/ville';
@@ -19,7 +20,7 @@ export class VilleComponent implements OnInit {
 
      constructor(
           private depavitementService: DepartementService,
-          //  private toastr: ToastrService,
+          private toastr: ToastrService,
           private villeService: VilleService,
      ) { }
 
@@ -40,12 +41,12 @@ export class VilleComponent implements OnInit {
           if (arg)
                this.villeService.delete(arg).subscribe({
                     next: data => {
-                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Suppression effectuée', 'Success');
                          this.onVille()
+                         this.form.reset()
                     },
                     error: err => {
-                         console.error('There was an error!', err);
-                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'supression", 'Error');
                     }
                })
      }
@@ -60,11 +61,12 @@ export class VilleComponent implements OnInit {
                };
                this.villeService.record(ville).subscribe({
                     next: data => {
-                         // this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Enregistrement effectué', 'Success');
                          this.onVille();
+                         this.form.reset()
                     },
                     error: error => {
-                         //  this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
                     },
                });
           }

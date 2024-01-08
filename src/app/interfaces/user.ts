@@ -4,7 +4,7 @@ export interface User {
     nom_prenom :String ,
     username :String ,
     email :String ,
-    numero :String ,
+   // numero :String ,
     password :String ,
     status? :String ,
     role? :String ,
