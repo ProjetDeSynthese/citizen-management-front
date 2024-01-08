@@ -87,4 +87,9 @@ export const routesApi = {
           FIND_BY_ID: apiURL + 'user/',
           UPDATE: apiURL + 'user/',
      },
+
+     AUTH: {
+          LOGIN: apiURL + 'auth/authenticate'
+     },
+
 };
