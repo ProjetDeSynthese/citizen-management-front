@@ -8,6 +8,7 @@ export interface Habitat {
       proprietaire : String,
       latitude : DoubleRange,
       longitude :DoubleRange,
+      prix :DoubleRange,
       secteur : Secteur,
       image: String [],
       typeHabitat : TypeHabitat
