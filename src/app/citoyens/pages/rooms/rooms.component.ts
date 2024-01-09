@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { Habitat } from 'src/app/interfaces/habitat';
+import { HabitatService } from 'src/app/services/habitat.service';
 @Component({
      selector: 'app-rooms',
      templateUrl: './rooms.component.html',
      styleUrls: ['./rooms.component.scss'],
 })
 export class RoomsComponent implements OnInit {
+
+     allHabitat! : Habitat[]
      map!: L.Map;
      centroid: L.LatLngExpression = [42.3601, -71.0589];
+     constructor(private habibatService:HabitatService){}
 
      private initMap(): void {
           // Initialiser la carte avec une vue par défaut
@@ -68,4 +73,12 @@ export class RoomsComponent implements OnInit {
           // this.initializeMap();
           this.initMap();
      }
+     getAllHabitats()
+  {
+    this.habibatService.findAll().subscribe({
+      next : res=>{
+        this.allHabitat = res
+      }
+    })
+  }
 }
