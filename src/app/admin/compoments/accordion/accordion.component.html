@@ -1,0 +1,23 @@
+<div class="accordion" [id]="idAccordion">
+     <div class="accordion-item" *ngFor="let iten of TableElement">
+          <h2 class="accordion-header">
+               <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    aria-expanded="true"
+                    [attr.data-bs-target]="'#' + iten.name"
+                    [attr.aria-controls]="iten.name"
+               >
+                    {{ iten.name }}
+               </button>
+          </h2>
+          <div [id]="iten.name" class="accordion-collapse collapse" [attr.data-bs-parent]="'#' + idAccordion">
+               <div class="accordion-body">
+                <div class="container">
+                  </div>
+               </div>
+          </div>
+     </div>
+</div>
+<ng-content></ng-content>

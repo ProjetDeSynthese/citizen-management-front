@@ -25,6 +25,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
+import { AccordionComponent } from './compoments/accordion/accordion.component';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.componen
         CreateHabitatComponent,
         ViewDetailHabitatComponent,
         AddCitoyensComponent,
-        AllCitoyensComponent, HeaderComponent, FooterComponent, ProfileComponent, TypeHabitatComponent
+        AllCitoyensComponent, HeaderComponent, FooterComponent, ProfileComponent, TypeHabitatComponent, AccordionComponent
     ],
     imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule,
     ]
