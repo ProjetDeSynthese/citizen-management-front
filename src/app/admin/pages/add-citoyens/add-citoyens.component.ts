@@ -1,6 +1,7 @@
 import { Citoyen } from './../../../interfaces/citoyen';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Habitat } from 'src/app/interfaces/habitat';
 import { CitoyenService } from 'src/app/services/citoyen.service';
 import { HabitatService } from 'src/app/services/habitat.service';
@@ -16,7 +17,7 @@ export class AddCitoyensComponent implements OnInit {
   form!: FormGroup
   habitats!: Habitat[]
 
-  constructor(private citoyenService: CitoyenService, private habitatService: HabitatService) {
+  constructor(private citoyenService: CitoyenService, private habitatService: HabitatService, private toastr: ToastrService) {
 
   }
   ngOnInit(): void {
@@ -32,7 +33,9 @@ export class AddCitoyensComponent implements OnInit {
     })
 
   }
-
+  findHabitat(id: String) {
+    return this.habitats.find(item => id === item.id)
+  }
   submit() {
     if (this.form) {
 
@@ -46,14 +49,23 @@ export class AddCitoyensComponent implements OnInit {
         nationalite: this.form.value.nationalite,
         profession: this.form.value.profession,
         numCni: this.form.value.numCni,
-
+        habitat: [this.findHabitat(this.form.value.habitat)]
       }
 
-
-      console.log(citoyen)
+      this.citoyenService.record(citoyen).subscribe({
+        next: data => {
+          this.toastr.success('Enregistrement effectué', 'Success');
+          this.form.reset()
+        },
+        error: error => {
+          this.toastr.error("Erreur d'enregistrement", 'Error');
+          this.form.reset()
+        },
+      });
 
     }
   }
+
 
   onForm() {
     this.form = new FormGroup({
@@ -66,7 +78,7 @@ export class AddCitoyensComponent implements OnInit {
       nationalite: new FormControl('', [Validators.required]),
       profession: new FormControl('', [Validators.required]),
       numCni: new FormControl('', [Validators.required]),
-      // habitat: new FormControl('', [Validators.required]),
+      habitat: new FormControl('', [Validators.required]),
 
     })
   }

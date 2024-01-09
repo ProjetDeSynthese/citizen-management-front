@@ -4,7 +4,7 @@ import { TypeHabitat } from "./type-habitat";
 export interface Habitat {
 
       id ?: String,
-      description :String,
+      description :any,
       proprietaire : String,
       latitude : DoubleRange,
       longitude :DoubleRange,

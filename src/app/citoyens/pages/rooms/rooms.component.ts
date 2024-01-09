@@ -31,7 +31,7 @@ export class RoomsComponent implements OnInit {
           const positions: L.LatLngExpression[] = [
                // Ajoutez d'autres positions ici...
                [10.5931, 14.3262],
-               [10.7372, 13.8076],
+               [10.7372, 10.7372],
                [10.1095, 14.4469],
                [11.0422, 14.1447],
                [12.0783, 15.0308],

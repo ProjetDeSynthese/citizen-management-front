@@ -11,5 +11,5 @@ export interface Citoyen {
     nationalite :String ,
     profession :String ,
     numCni :String ,
-  //  habitats : Habitat[]
+   habitat : any[]
 }

@@ -2,18 +2,18 @@
 
 <main id="main" class="main">
      <div class="pagetitle">
-          <h1>Ajouter des citoyens</h1>
+          <h1>Nouveau Citoyen</h1>
           <nav>
                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="">Home</a></li>
-                    <li class="breadcrumb-item active">add-citizens</li>
+                    <li class="breadcrumb-item"><a href="">Accueil</a></li>
+                    <li class="breadcrumb-item active">Nouveau citoyen</li>
                </ol>
           </nav>
      </div>
      <!-- End Page Title -->
      <section class="section">
           <div class="row justify-content-center">
-               <div class="col-lg-8">
+               <div class="col-lg-12">
                     <div class="card">
                          <div class="card-body">
                               <h5 class="card-title">Ajouter un citoyen</h5>
@@ -55,7 +55,6 @@
                                         <label class="col-sm-2 col-form-label">Situation matrimoniale</label>
                                         <div class="col-sm-10">
                                              <select class="form-select" aria-label="Default select example" formControlName="situationMat">
-                                                  <option selected>Select</option>
                                                   <option value="Celibataire">Celibataire</option>
                                                   <option value="Marié">Marié</option>
                                              </select>
@@ -93,16 +92,14 @@
                                              <input type="text" class="form-control" formControlName="numCni" />
                                         </div>
                                    </div>
+                                   
                                    <div class="row mb-5">
+                                        
                                         <label class="col-sm-2 col-form-label">Habitat</label>
                                         <div class="col-sm-10">
                                              <select class="form-select" aria-label="Default select example" formControlName="habitat">
-                                                  <!-- <option selected>Select</option> -->
-                                                        <!-- <option *ngFor="let habitatItem of habitats" [value]="habitatItem.id">{{ habitatItem.address }}</option> -->
+                                                  <option *ngFor="let habitatItem of habitats" [value]="habitatItem.id">{{ habitatItem.proprietaire +" (lat :"+ habitatItem.latitude  +" longi :"+ habitatItem.longitude+" ) " }}</option>
 
-                                                  <option value="1">Pont rouge</option>
-                                                  <option value="2">Pont vert</option>
-                                                  <option value="3">Domayo</option>
                                              </select>
                                         </div>
                                    </div>
