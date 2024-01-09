@@ -1,15 +1,8 @@
- <header role="banner">
+<header role="banner">
      <nav class="navbar navbar-expand-md navbar-dark bg-light">
           <div class="container">
-               <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarsExample05"
-                    aria-controls="navbarsExample05"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-               >
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
+                    aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                </button>
 
@@ -19,20 +12,13 @@
                               <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
                          </li>
                          <li class="nav-item dropdown">
-                              <a
-                                   class="nav-link"
-                                   routerLink="/citoyens/room"
-                                   routerLinkActive="active"
-                                   id="dropdown04"
-                                   data-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false"
-                              >
+                              <a class="nav-link" routerLink="/citoyens/room" routerLinkActive="active" id="dropdown04"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                    Maisons
                               </a>
-                          
+
                          </li>
-                       
+
                          <li class="nav-item">
                               <a class="nav-link" routerLinkActive="active" routerLink="/citoyens/about">About</a>
                          </li>
@@ -41,14 +27,8 @@
                          </li>
 
                          <li class="nav-item dropdown">
-                              <a
-                                   type="button"
-                                   class="nav-link dropdown-toggle active"
-                                   id="dropdown004"
-                                   data-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false"
-                              >
+                              <a type="button" class="nav-link dropdown-toggle active" id="dropdown004"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                    Espace Client
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdown004">
@@ -57,23 +37,21 @@
                               </div>
                          </li>
 
-                        
+
                     </ul>
                </div>
           </div>
      </nav>
 </header>
-
-<section
-     class="site-hero site-hero-innerpage overlay"
-     style="background-image: url(assets/templateClient/images/big_image_1.jpg)"
->
+<section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5"
+     style="background-image: url(assets/images/banner.webp)">
      <div class="container">
           <div class="row align-items-center site-hero-inner justify-content-center">
                <div class="col-md-12 text-center">
                     <div class="mb-5 element-animate fadeInUp element-animated">
-                         <h1>Bienvenue dans nos Maisons de luxe</h1>
-                         <p>Lisez nos actualités et événements quotidiens de notre hôtel de luxe.</p>
+                         <h1>Bienvenue dans Citizen Management</h1>
+                         <p>Application de Gestion intelligente pour des habitats prospères et des citoyens épanouis</p>
+                         <!-- <p>Lisez nos actualités et événements quotidiens de notre hôtel de luxe.</p> -->
                     </div>
                </div>
           </div>
@@ -96,7 +74,20 @@
                </div>
           </div>
           <div class="row">
-               <div class="col-md-4">
+               <div class="col-md-4" *ngFor="let item of allHabitat">
+                    <div class="post-entry">
+                         <img src="assets/templateClient/images/img_3.jpg" alt="Image placeholder" class="img-fluid" />
+                         <div class="body-text">
+                              <div class="category">NOUVELLES</div>
+                              <h3 class="mb-3"><a href="#">{{item.typeHabitat.name}}</a></h3>
+                              <p class="mb-4">
+                                   {{item.description}}
+                              </p>
+                              <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">PLUS DE DEATIL</a></p>
+                         </div>
+                    </div>
+               </div>
+               <!--  <div class="col-md-4">
                     <div class="post-entry">
                          <img src="assets/templateClient/images/img_3.jpg" alt="Image placeholder" class="img-fluid" />
                          <div class="body-text">
@@ -137,7 +128,7 @@
                               <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">PLUS DE DEATIL</a></p>
                          </div>
                     </div>
-               </div>
+               </div> -->
           </div>
 
           <div class="text-center">
@@ -146,7 +137,8 @@
      </div>
 </section>
 
-<section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(assets/templateClient/images/img_5.jpg)">
+<section class="section-cover" data-stellar-background-ratio="0.5"
+     style="background-image: url(assets/templateClient/images/img_5.jpg)">
      <div class="container">
           <div class="row justify-content-center align-items-center intro">
                <div class="col-md-9 text-center element-animate">
@@ -157,5 +149,4 @@
      </div>
 </section>
 
-<app-footer></app-footer> 
-
+<app-footer></app-footer>

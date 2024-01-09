@@ -39,6 +39,7 @@ export class TypeHabitatComponent implements OnInit {
         next: data => {
           this.toastr.success('Enregistrement effectué', 'Success');
           this.onGetHabitat();
+          this.form.reset()
         },
         error: error => {
           this.toastr.error("Erreur d'enregistrement", 'Error');
@@ -58,20 +59,20 @@ export class TypeHabitatComponent implements OnInit {
 
 
 
-  remove(arg : String | undefined) {
+  remove(arg: String | undefined) {
     if (arg)
       this.habitatService.delete(arg).subscribe({
         next: data => {
-          //   this.toastr.success('Enregistrement effectué', 'Success');
+          this.toastr.success('Enregistrement effectué', 'Success');
           this.onGetHabitat()
+          this.form.reset()
         },
         error: err => {
-          console.error('There was an error!', err);
-          // this.toastr.error("Erreur d'enregistrement", 'Error');
+          this.toastr.error("Erreur d'suppression", 'Error');
         }
       })
   }
 
- 
+
 
 }

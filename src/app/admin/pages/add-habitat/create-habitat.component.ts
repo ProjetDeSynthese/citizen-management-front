@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Departement } from 'src/app/interfaces/departement';
-import { Habitat, SidebarHabitat } from 'src/app/interfaces/habitat';
+import { Habitat } from 'src/app/interfaces/habitat';
 import { Quartier } from 'src/app/interfaces/quartier';
 import { Region } from 'src/app/interfaces/region';
 import { Secteur } from 'src/app/interfaces/secteur';
@@ -15,6 +15,9 @@ import { QuartierService } from 'src/app/services/quartier.service';
 import { RegionService } from 'src/app/services/region.service';
 import { SecteurService } from 'src/app/services/secteur.service';
 import { VilleService } from 'src/app/services/ville.service';
+import * as L from 'leaflet';
+import { TypeHabitat } from 'src/app/interfaces/type-habitat';
+import { TypeHabitatService } from 'src/app/services/type-habitat.service';
 
 @Component({
      selector: 'app-create-habitat',
@@ -31,7 +34,12 @@ export class CreateHabitatComponent implements OnInit {
      allQuartier!: Quartier[];
      allSecteur!: Secteur[];
      form!: FormGroup;
-     typeHabitat!: any;
+     typeHabitat!: TypeHabitat[];
+     allHabitat!: Habitat[];
+     map!: L.Map;
+     centroid: L.LatLngExpression = [42.3601, -71.0589];
+     long: any;
+     lat: any;
 
      constructor(
           private regionService: RegionService,
@@ -42,11 +50,14 @@ export class CreateHabitatComponent implements OnInit {
           private secteurService: SecteurService,
           private habitaService: HabitatService,
           private toastr: ToastrService,
+          private typeHabitatService: TypeHabitatService,
      ) {}
 
      ngOnInit(): void {
           this.onform();
           this.onRegion();
+          this.initMap();
+          this.onTypeHabitat();
      }
 
      onform() {
@@ -56,6 +67,7 @@ export class CreateHabitatComponent implements OnInit {
                type: new FormControl('', [Validators.required]),
                image: new FormControl('', [Validators.required]),
                description: new FormControl('', [Validators.required]),
+               proprietaire: new FormControl('', [Validators.required]),
           });
      }
 
@@ -117,23 +129,103 @@ export class CreateHabitatComponent implements OnInit {
      onPost() {
           let habitat: Habitat = {
                description: this.form.value.description,
-               proprietaire: '',
-               latitude: 0.99,
-               longitude: 22,
+               proprietaire: this.form.value.proprietaire,
+               latitude: this.lat,
+               longitude: this.long,
                secteur: this.form.value.secteur,
-               image: this.form.value.image,
-               typeHabitat: { name: 'ww' },
+               image: [''],
+               typeHabitat: this.findTypeHabitat(this.form.value.type),
                prix: this.form.value.prix,
           };
+          debugger;
           this.habitaService.record(habitat).subscribe({
                next: data => {
+                    debugger;
                     this.toastr.success('Enregistrement effectué', 'Success');
                     this.form.reset();
                },
                error: err => {
+                    debugger;
                     console.error('There was an error!', err);
                     this.toastr.error("Erreur d'enregistrement", 'Error');
                },
           });
      }
+
+     findTypeHabitat(id: String): any {
+          return this.typeHabitat.find(Iten => id === Iten.id);
+     }
+
+     onTypeHabitat() {
+          this.typeHabitatService.findAll().subscribe({
+               next: res => {
+                    this.typeHabitat = res;
+               },
+          });
+     }
+
+     private initMap(): void {
+          // Initialiser la carte avec une vue par défaut
+          this.map = L.map('map').setView([0, 0], 2);
+
+          // Ajouter une couche de tuiles OpenStreetMap
+          const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               maxZoom: 18,
+               minZoom: 2,
+               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap </a> ',
+          });
+
+          tiles.addTo(this.map);
+
+          // Tableau de positions avec des coordonnées (latitude, longitude)
+          const positions: L.LatLngExpression[] = [
+               // Ajoutez d'autres positions ici...
+               // [10.5931, 14.3262],
+               // [10.7372, 10.7372],
+               // [10.1095, 14.4469],
+               // [11.0422, 14.1447],
+               // [12.0783, 15.0308],
+               // [10.9211, 14.385],
+               // [10.2833, 14.1833],
+               // [12.0638, 14.4308],
+               // [10.7333, 14.5167],
+               // [10.1625, 14.3328],
+               // ... Ajoutez autant de positions que nécessaire
+          ];
+
+          // Créer un tableau de marqueurs pour chaque position
+          const markers = positions.map(position => L.marker(position));
+
+          // Ajouter les marqueurs à la carte
+          markers.forEach(marker => marker.addTo(this.map));
+
+          // Activer la localisation de l'utilisateur si le navigateur le prend en charge
+          if ('geolocation' in navigator) {
+               navigator.geolocation.getCurrentPosition(
+                    position => {
+                         const userPosition: L.LatLngExpression = [position.coords.latitude, position.coords.longitude];
+                         this.long = position.coords.longitude;
+                         this.lat = position.coords.latitude;
+                         // Créer un marqueur pour la position de l'utilisateur
+                         const userMarker = L.marker(userPosition).addTo(this.map);
+                         userMarker.bindPopup('Votre position actuelle').openPopup();
+
+                         // Centrer la carte sur la position de l'utilisateur
+                         this.map.setView(userPosition, 12);
+                    },
+                    error => {
+                         console.error('Error getting user location:', error);
+                    },
+               );
+          }
+     }
+
+     //      getAllHabitats()
+     //   {
+     //     this.habibatService.findAll().subscribe({
+     //       next : res=>{
+     //         this.allHabitat = res
+     //       }
+     //     })
+     //   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Commune } from 'src/app/interfaces/commune';
 import { Quartier } from 'src/app/interfaces/quartier';
 import { CommuneService } from 'src/app/services/commune.service';
@@ -18,9 +18,9 @@ export class QuartierComponent implements OnInit {
 
      constructor(
           private communeService: CommuneService,
-         // private toastr: ToastrService,
+          private toastr: ToastrService,
           private quartierService: QuartierService,
-     ) {}
+     ) { }
 
      ngOnInit(): void {
           this.onGetQuartier();
@@ -40,36 +40,35 @@ export class QuartierComponent implements OnInit {
           if (arg)
                this.quartierService.delete(arg).subscribe({
                     next: data => {
-                         //   this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Suppresion effectuée', 'Success');
                          this.onGetQuartier()
                     },
                     error: err => {
-                         console.error('There was an error!', err);
-                         // this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'suppresion", 'Error');
                     }
                })
      }
      submit() {
           const commune = this.findCommune(this.form.value.commune)
-          if (commune){
+          if (commune) {
                var quartier: Quartier = {
                     name: this.form.value.name,
                     code: this.form.value.code,
                     commune: commune,
                };
-               console.log(quartier)
-                this.quartierService.record(quartier).subscribe({
+               this.quartierService.record(quartier).subscribe({
                     next: data => {
-                        // this.toastr.success('Enregistrement effectué', 'Success');
+                         this.toastr.success('Enregistrement effectué', 'Success');
                          this.onGetQuartier();
+                         this.form.reset()
                     },
                     error: error => {
-                      //   this.toastr.error("Erreur d'enregistrement", 'Error');
+                         this.toastr.error("Erreur d'enregistrement", 'Error');
                     },
-               }); 
+               });
 
           }
-         
+
      }
 
      onGetQuartier() {

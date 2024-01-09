@@ -7,7 +7,7 @@
           <div class="row align-items-center">
                <div class="col-md-4">
                     <div class="heading-wrap text-center element-animate">
-                         <h4 class="sub-heading">SÉJOURNEZ DANS NOS MAISONS DE LUXE</h4>
+                         <h4 class="sub-heading">RECHERCHER UN HABIBAT ET UN CITOYEN .</h4>
                          <h2 class="heading">Restez et profitez</h2>
                          <!-- <p class="mb-5 element-animate fadeInUp element-animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus illo similique natus, a recusandae? Dolorum, unde a quibusdam est? Corporis deleniti obcaecati quibusdam inventore fuga eveniet! Qui delectus tempore amet!</p> -->
                          <p class="mb-5 element-animate fadeInUp element-animated">
@@ -28,8 +28,8 @@
      <div class="container">
           <div class="row mb-5">
                <div class="col-md-12 heading-wrap text-center">
-                    <h4 class="sub-heading">NOS MAISONS DE LUXE</h4>
-                    <h2 class="heading">MAISONS CELEBRE</h2>
+                    <h4 class="sub-heading">RECHERCHEZ DES LOGEMENTS </h4>
+                    <h2 class="heading">NOS LOGEMENTS</h2>
                </div>
           </div>
           <div class="row">
@@ -59,12 +59,14 @@
                                    </li>
                               </ul>
                               <p>Quartier ; oro-tchede ( non loin de petit marché)</p>
-                              <p><a routerLink="/citoyens/booknow" class="btn btn-primary btn-sm">RESERVEZ MAINTENANT</a></p>
+                              <p><a routerLink="/citoyens/booknow" class="btn btn-primary btn-sm">RESERVEZ
+                                        MAINTENANT</a></p>
                          </div>
                     </div>
                </div>
                <div class="col-md-5 room-thumbnail-absolute">
-                    <a href="#" class="media d-block room bg first-room" style="background-image: url(assets/templateClient/images/img_2.jpg)">
+                    <a href="#" class="media d-block room bg first-room"
+                         style="background-image: url(assets/templateClient/images/img_2.jpg)">
                          <!-- <figure> -->
                          <div class="overlap-text">
                               <span>
@@ -78,7 +80,8 @@
                          <!-- </figure> -->
                     </a>
 
-                    <a href="#" class="media d-block room bg second-room" style="background-image: url(assets/templateClient/images/img_4.jpg)">
+                    <a href="#" class="media d-block room bg second-room"
+                         style="background-image: url(assets/templateClient/images/img_4.jpg)">
                          <!-- <figure> -->
                          <div class="overlap-text">
                               <span>
@@ -96,7 +99,8 @@
      </div>
 </section>
 
-<section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url(assets/templateClient/images/img_5.jpg)">
+<section class="section-cover" data-stellar-background-ratio="0.5"
+     style="background-image: url(assets/templateClient/images/img_5.jpg)">
      <div class="container">
           <div class="row justify-content-center align-items-center intro">
                <div class="col-md-9 text-center element-animate">
@@ -113,12 +117,25 @@
      <div class="container">
           <div class="row mb-5">
                <div class="col-md-12 heading-wrap text-center">
-                    <h4 class="sub-heading">NOTRE Blog</h4>
-                    <h2 class="heading">NOTRE BLOG RECENT</h2>
+                    <h4 class="sub-heading">Publication recentes </h4>
+                    <h2 class="heading">NOS PUBLICATIONS</h2>
                </div>
           </div>
           <div class="row">
-               <div class="col-md-4">
+               <div class="col-md-4" *ngFor="let item of allHabitat">
+                    <div class="post-entry">
+                         <img src="assets/templateClient/images/img_3.jpg" alt="Image placeholder" class="img-fluid" />
+                         <div class="body-text">
+                              <div class="category">NOUVELLES</div>
+                              <h3 class="mb-3"><a href="#">{{item.typeHabitat.name}}</a></h3>
+                              <p class="mb-4">
+                                   {{item.description}}
+                              </p>
+                              <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">PLUS DE DEATIL</a></p>
+                         </div>
+                    </div>
+               </div>
+               <!--   <div class="col-md-4">
                     <div class="post-entry">
                          <img src="assets/templateClient/images/img_3.jpg" alt="Image placeholder" class="img-fluid" />
                          <div class="body-text">
@@ -159,7 +176,7 @@
                               <p><a href="#" class="btn btn-primary btn-outline-primary btn-sm">PLUS DE DEATIL</a></p>
                          </div>
                     </div>
-               </div>
+               </div> -->
           </div>
 
           <div class="text-center">
