@@ -12,3 +12,10 @@ export interface Habitat {
       image: String [],
       typeHabitat : TypeHabitat
 }
+export interface SidebarHabitat {
+      label?: string;
+      icon?: string;
+      routerlink?: string;
+      item?: SidebarHabitat[];
+ }
+ 

@@ -3,6 +3,8 @@
 <main id="main" class="main">
      <div class="pagetitle">
           <h1>Habitat</h1>
+
+
           <nav>
                <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
@@ -17,11 +19,114 @@
                          <h5 class="card-title">Nouveau Habitat</h5>
 
                          <!-- General Form Elements -->
-                         <form>
+
+
+                         <div class="accordion" id="accordionExample">
+                              <div class="accordion-item boder-0" *ngFor="let regionIten of allRegion">
+                                   <h2 class="accordion-header">
+                                        <button
+                                             class="accordion-button"
+                                             type="button"
+                                             data-bs-toggle="collapse"
+                                             [attr.data-bs-target]="'#' + regionIten.name"
+                                             [attr.aria-controls]="regionIten.name"
+                                             title="region"
+                                             (click)="onFiltreDepart(regionIten.id)"
+                                        >
+                                             {{ regionIten.name }}
+                                        </button>
+                                   </h2>
+                                   <!-- Departement -->
+                                   <div [id]="regionIten.name" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body" *ngFor="let departIten of allDepart">
+                                             <h2 class="accordion-header">
+                                                  <button
+                                                       class="accordion-button"
+                                                       type="button"
+                                                       data-bs-toggle="collapse"
+                                                       aria-expanded="true"
+                                                       [attr.data-bs-target]="'#' + departIten.name"
+                                                       [attr.aria-controls]="departIten.name"
+                                                       (click)="onFiltreVilles(departIten.id)"
+                                                  >
+                                                       {{ departIten.name }}
+                                                  </button>
+                                             </h2>
+               
+                                             <!-- villes -->
+                                             <div [id]="departIten.name" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                  <div class="accordion-body" *ngFor="let villeIten of allVille">
+                                                       <h2 class="accordion-header">
+                                                            <button
+                                                                 class="accordion-button"
+                                                                 type="button"
+                                                                 data-bs-toggle="collapse"
+                                                                 aria-expanded="true"
+                                                                 [attr.data-bs-target]="'#' + villeIten.name"
+                                                                 [attr.aria-controls]="villeIten.name"
+                                                                 (click)="onFiltreCommune(villeIten.id)"
+                                                            >
+                                                                 {{ villeIten.name }}
+                                                            </button>
+                                                       </h2>
+               
+                                                       <!-- quartier -->
+                                                       <div [id]="villeIten.name" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                            <div class="accordion-body" *ngFor="let quartierIten of allQuartier">
+                                                                 <h2 class="accordion-header">
+                                                                      <button
+                                                                           class="accordion-button"
+                                                                           type="button"
+                                                                           data-bs-toggle="collapse"
+                                                                           aria-expanded="true"
+                                                                           [attr.data-bs-target]="'#' + quartierIten.name"
+                                                                           [attr.aria-controls]="quartierIten.name"
+                                                                           (click)="onFiltreQuartier(quartierIten.id)"
+                                                                      >
+                                                                           {{ quartierIten.name }}
+                                                                      </button>
+                                                                 </h2>
+               
+                                                                 <!-- secteur -->
+                                                                 <div [id]="quartierIten.name" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                                                      <div class="accordion-body">
+                                                                           <div class="col-sm-10">
+                                                                                <select
+                                                                                     class="form-select"
+                                                                                     multiple
+                                                                                     aria-label="multiple select example"
+                                                                                     style="max-height: 50px"
+                                                                                     formControlName="secteur1"
+                                                                                >
+                                                                                     <option *ngFor="let sectIten of allSecteur" [value]="sectIten.name">
+                                                                                          {{ sectIten.name }}
+                                                                                     </option>
+                                                                                </select>
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+
+
+                         <!-- <form>
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">Regions</label>
                                    <div class="col-sm-10">
-                                        <select class="form-select" multiple aria-label="multiple select example" style="height: 50px" formControlName="region" (change)="onGetDepartement($event)">
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="height: 50px"
+                                             formControlName="region"
+                                        >
                                              <option *ngFor="let regionIten of allRegion" [value]="regionIten.name">{{ regionIten.name }}</option>
                                         </select>
                                    </div>
@@ -30,7 +135,13 @@
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">Departements</label>
                                    <div class="col-sm-10">
-                                        <select class="form-select" multiple aria-label="multiple select example" style="max-height: 50px" formControlName="departement">
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="max-height: 50px"
+                                             formControlName="departement"
+                                        >
                                              <option *ngFor="let DepaIten of allDepart" [value]="DepaIten.name">{{ DepaIten.name }}</option>
                                         </select>
                                    </div>
@@ -39,7 +150,14 @@
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">villes</label>
                                    <div class="col-sm-10">
-                                        <select class="form-select" aria-label="multiple select example" style="max-height:50px" formControlName="ville">
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="max-height: 50px"
+                                             formControlName="ville"
+                                             (change)="onFiltreCommune($event)"
+                                        >
                                              <option *ngFor="let villeIten of allVille" [value]="villeIten.name">{{ villeIten.name }}</option>
                                         </select>
                                    </div>
@@ -47,16 +165,30 @@
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">Commune</label>
                                    <div class="col-sm-10">
-                                        <select class="form-select" aria-label="multiple select example" style="max-height: 100px" formControlName="commune">
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="max-height: 50px"
+                                             formControlName="commune"
+                                             (change)="onFiltreQuartier($event)"
+                                        >
                                              <option *ngFor="let comIten of allCommune" [value]="comIten.name">{{ comIten.name }}</option>
                                         </select>
                                    </div>
                               </div>
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">Quartier</label>
-                                   <div class="col-sm-10"> 
-                                        <select class="form-select" aria-label="multiple select example" style="max-height: 100px" formControlName="quartier">
-                                             <option *ngFor="let quartierIten of allQuartier" [value]="quartierIten.name" >
+                                   <div class="col-sm-10">
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="max-height: 50px"
+                                             formControlName="quartier"
+                                             (change)="onFiltreSecteur($event)"
+                                        >
+                                             <option *ngFor="let quartierIten of allQuartier" [value]="quartierIten.name">
                                                   {{ quartierIten.name }}
                                              </option>
                                         </select>
@@ -65,8 +197,13 @@
                               <div class="row mb-3">
                                    <label class="col-sm-2 col-form-label">Secteurs</label>
                                    <div class="col-sm-10">
-                                        <select class="form-select" aria-label="multiple select example" style="max-height: 100px" formControlName="secteur">
-                                             
+                                        <select
+                                             class="form-select"
+                                             multiple
+                                             aria-label="multiple select example"
+                                             style="max-height: 50px"
+                                             formControlName="secteur"
+                                        >
                                              <option *ngFor="let sectIten of allSecteur" [value]="sectIten.name">{{ sectIten.name }}</option>
                                         </select>
                                    </div>
@@ -90,7 +227,9 @@
                                         <button type="submit" class="btn btn-primary">Submit Form</button>
                                    </div>
                               </div>
-                         </form>
+                         </form> -->
+
+
                     </div>
                </div>
           </div>

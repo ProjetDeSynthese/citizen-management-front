@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Commune } from 'src/app/interfaces/commune';
 import { Departement } from 'src/app/interfaces/departement';
+import { SidebarHabitat } from 'src/app/interfaces/habitat';
 import { Quartier } from 'src/app/interfaces/quartier';
 import { Region } from 'src/app/interfaces/region';
 import { Secteur } from 'src/app/interfaces/secteur';
@@ -19,6 +20,7 @@ import { VilleService } from 'src/app/services/ville.service';
      styleUrls: ['./create-habitat.component.scss'],
 })
 export class CreateHabitatComponent implements OnInit {
+   
      selectedFile: File | null = null;
      selectedFileSrc!: string;
      allRegion!: Region[];
@@ -28,6 +30,7 @@ export class CreateHabitatComponent implements OnInit {
      allQuartier!: Quartier[];
      allSecteur!: Secteur[];
      form!: FormGroup;
+   
 
      constructor(
           private regionService: RegionService,
@@ -40,11 +43,7 @@ export class CreateHabitatComponent implements OnInit {
 
      ngOnInit(): void {
           this.onRegion();
-          // this.onGetDepartement();
-          this.onVille();
-          this.onGetCommune();
-          this.onGetQuartier();
-          this.onGetSecteur();
+       
      }
 
      onform() {
@@ -60,57 +59,65 @@ export class CreateHabitatComponent implements OnInit {
 
      onRegion() {
           this.regionService.findAll().subscribe(data => {
-               debugger;
                this.allRegion = data;
           });
      }
 
-     onGetDepartement(event: any) {
-          this.departService.findAll().subscribe({
-               next: res => {
-                    debugger;
-                    const region = event.target.value;
 
-                    if (region) {
-                         debugger;
-                         res.forEach(regionIt => {
-                              if (region === regionIt.region.name) {
-                                   this.allDepart.push(regionIt);
-                              }
-                         });
-                    }
-               },
-          });
+
+
+     onFiltreDepart(id: string | undefined) {
+          if (id) {
+               this.regionService.findAllDepartement(id).subscribe({
+                    next: res => {
+                         this.allDepart = res;
+                    },
+               });
+          }
      }
 
-     onVille() {
-          this.villeService.findAll().subscribe({
-               next: res => {
-                    this.allVille = res;
-               },
-          });
+     onFiltreVilles(id: string|undefined) {
+     
+
+          if (id) {
+               this.departService.getALlVIlle(id).subscribe({
+                    next: res => {
+                         this.allVille = res;
+                    },
+               });
+          }
      }
 
-     onGetQuartier() {
-          this.quartierService.findAll().subscribe({
-               next: res => {
-                    this.allQuartier = res;
-               },
-          });
+     onFiltreCommune(id: string|undefined) {
+                 if (id) {
+               this.villeService.getAllCommune(id).subscribe({
+                    next: res => {
+                         this.allCommune = res;
+                    },
+               });
+          }
      }
 
-     onGetCommune() {
-          this.communeService.findAll().subscribe({
-               next: res => {
-                    this.allCommune = res;
-               },
-          });
+     onFiltreQuartier(id: string|undefined) {
+         
+
+          if (id) {
+               this.communeService.getAllCommune(id).subscribe({
+                    next: res => {
+                         this.allQuartier = res;
+                    },
+               });
+          }
      }
-     onGetSecteur() {
-          this.secteurService.findAll().subscribe({
-               next: res => {
-                    this.allSecteur = res;
-               },
-          });
+
+     onFiltreSecteur(id: string|undefined) {
+          
+          if (id) {
+               this.quartierService.getAllQuartier(id).subscribe({
+                    next: res => {
+                         this.allSecteur = res;
+                    },
+               });
+          }
      }
 }
