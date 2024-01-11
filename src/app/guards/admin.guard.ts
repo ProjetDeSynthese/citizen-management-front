@@ -1,10 +1,21 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Roles } from 'src/roles.citizen';
 
 export const adminGuard: CanActivateFn = (route, state) => {
-    
-  const authService =  new AuthService()
+     const router = inject(Router);
+     const authService = inject(AuthService);
+     const toast = inject(ToastrService);
 
-  const isAdmin = authService;
-  return true;
+     const RolesAdmin = authService.getRole();
+
+     if (RolesAdmin === Roles.Admin) {
+          return true;
+     } else {
+          toast.error("vous n'avez pas acces", 'echec');
+          router.navigateByUrl('/auth/connexion');
+          return false;
+     }
 };
