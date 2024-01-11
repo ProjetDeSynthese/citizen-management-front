@@ -6,7 +6,7 @@
                          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                               <div class="d-flex justify-content-center py-4">
                                    <a href="" class="logo d-flex align-items-center w-auto">
-                                        <img src="assets/img/logo.png" alt="" />
+                                        <!-- <img src="assets/img/logo.png" alt="" /> -->
                                         <span class="d-none d-lg-block">Citizen Management</span>
                                    </a>
                               </div>
@@ -19,7 +19,7 @@
                                              <p class="text-center small">Enter your username & password to login</p>
                                         </div>
 
-                                        <form class="row g-3 needs-validation">
+                                        <form (submit)="onSubmit()" [formGroup]="loginForm" class="row g-3 needs-validation">
                                              <div class="col-12">
                                                   <label for="yourUsername" class="form-label">Entrez votre email</label>
                                                   <div class="input-group has-validation">
@@ -38,26 +38,17 @@
 
                                              <div class="col-12">
                                                   <label for="yourPassword" class="form-label">Mots de passe</label>
-                                                  <input type="password" name="password" class="form-control" id="yourPassword" required />
+                                                  <input type="password" name="password" class="form-control" id="yourPassword" required formControlName="password" />
                                                   <div class="invalid-feedback">Champs Obligatoires</div>
                                              </div>
 
+                                           
                                              <div class="col-12">
-                                                  <div class="form-check">
-                                                       <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe" />
-                                                       <label class="form-check-label" for="rememberMe">Se souvenir</label>
-                                                  </div>
-                                             </div>
-                                             <div class="col-12">
-                                                  <a class="btn btn-primary w-100" href="/admin">Se Connecter (admin)</a>
-                                             </div>
-                                             <div class="col-12">
-                                                  <a class="btn btn-secondary w-100" href="/bailleur">Se Connecter (bailleur)</a>
+                                                  <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid">
+                                                       Se Connecter
+                                                  </button>
                                              </div>
 
-                                             <div class="col-12">
-                                                  <a class="btn btn-success w-100" href="/citoyens-dashboard">Se Connecter (citoyen)</a>
-                                             </div>
                                              <div class="col-12">
                                                   <p class="small mb-0">
                                                        Already have an account?

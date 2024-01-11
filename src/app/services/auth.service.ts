@@ -1,20 +1,49 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { routesApi } from '../core/config';
+import { credentials, jwtTokenDecode } from '../interfaces/user';
 @Injectable({
      providedIn: 'root',
 })
 export class AuthService {
      readonly API_URL = routesApi.AUTH;
-     constructor(private http: HttpClient) {}
+     constructor(private http: HttpClient) {
+          const access = this.getAuthToken();
+          debugger;
+          // const access =
+          //      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc3NhbWFuZWwwNUBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4MjQ0MzAsImV4cCI6MTcwNDgyNDczMH0.YARZTQB117RDK2upmAwXCjXThiAcgalo6Hcg5v48BDI';
 
-     login(username: string, password: string): Observable<any> {
+          if (access) {
+               debugger;
+               this.setUser(this.decodeJwtToken(access));
+          }
+     }
+     user!: jwtTokenDecode | null;
+
+     // token = {
+     //      accessToken:
+     //           'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc3NhbWFuZWwwNUBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4MjQ0MzAsImV4cCI6MTcwNDgyNDczMH0.YARZTQB117RDK2upmAwXCjXThiAcgalo6Hcg5v48BDI',
+     //      role: '[ROLE_ADMIN]',
+     // };
+
+     login(username: string, password: string): Observable<credentials> {
           const credentials = { username, password };
-          return this.http.post(this.API_URL.LOGIN, credentials).pipe(map(res => {
-            debugger
-            // localStorage.setItem('token',res.token)
-          }));
+          return this.http.post<credentials>(this.API_URL.LOGIN, credentials).pipe(
+               tap(res => {
+                    debugger;
+                    this.setUser(this.decodeJwtToken(res.accessToken));
+                    this.setAuthToken(res.accessToken);
+                    this.setRole(res.role[0]);
+               }),
+          );
+     }
+
+     setRole(role: string) {
+          localStorage.setItem('role', role);
+     }
+     getRole():string |null {
+         return localStorage.getItem('role');
      }
 
      setAuthToken(token: string): void {
@@ -37,38 +66,13 @@ export class AuthService {
           const token = this.getAuthToken();
           return new HttpHeaders().set('Authorization', `Bearer ${token}`);
      }
-     /*  getUserRole(): string | null {
-    const token = this.getAuthToken();
-    if (token) {
-      try {
-        const decodedToken: any = jwt_decode(token);
-        const userRole = decodedToken.role; 
-        return userRole;
-      } catch (error) {
-        console.error('Error decoding token:', error);
-      }
-    }
-    return null;
-  }
-  getUsername(): string | null {
-    const token = this.getAuthToken();
-    if (token) {
-      try {
-        const decodedToken: any = jwt_decode(token);
-        const username = decodedToken.username; 
-        return username;
-      } catch (error) {
-        console.error('Error decoding token:', error);
-      }
-    }
-    return null;
-  } */
 
-     private decodeJwtToken(token: string): any | null {
+     private decodeJwtToken(token: string): jwtTokenDecode | null {
           const payloadBase64 = this.getJwtPayloadBase64(token);
           if (payloadBase64) {
                const payloadJson = new TextDecoder().decode(this.base64ToBytes(payloadBase64));
                const user = JSON.parse(payloadJson) as any;
+               debugger;
                return user;
           }
           return null;
@@ -93,5 +97,31 @@ export class AuthService {
           }
 
           return bytes;
+     }
+
+     private time(timestamp: number) {
+          return new Date(timestamp * 1000); // * 1000 pour convertir en millisecondes
+     }
+
+     private setUser(user: null | jwtTokenDecode) {
+          debugger;
+          if (user) {
+               const expDate = this.time(user.exp);
+               const now: Date = new Date();
+
+               // Comparez les dates
+               if (now <= expDate) {
+                    this.user = user;
+               } else {
+                    this.user = null;
+               }
+          } else {
+               this.user = user;
+          }
+     }
+
+     public getUser(): jwtTokenDecode | null {
+          debugger;
+          return this.user;
      }
 }
