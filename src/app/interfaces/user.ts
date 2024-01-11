@@ -12,7 +12,7 @@ export interface User {
 
 export interface credentials {
      accessToken: string;
-     role: string[];
+     role: string;
 }
 
 export interface jwtTokenDecode {

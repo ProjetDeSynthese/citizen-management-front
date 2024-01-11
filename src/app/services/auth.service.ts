@@ -10,12 +10,12 @@ export class AuthService {
      readonly API_URL = routesApi.AUTH;
      constructor(private http: HttpClient) {
           const access = this.getAuthToken();
-          debugger;
+          
           // const access =
           //      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc3NhbWFuZWwwNUBnbWFpbC5jb20iLCJpYXQiOjE3MDQ4MjQ0MzAsImV4cCI6MTcwNDgyNDczMH0.YARZTQB117RDK2upmAwXCjXThiAcgalo6Hcg5v48BDI';
 
           if (access) {
-               debugger;
+               
                this.setUser(this.decodeJwtToken(access));
           }
      }
@@ -31,7 +31,7 @@ export class AuthService {
           const credentials = { username, password };
           return this.http.post<credentials>(this.API_URL.LOGIN, credentials).pipe(
                tap(res => {
-                    debugger;
+                    
                     this.setUser(this.decodeJwtToken(res.accessToken));
                     this.setAuthToken(res.accessToken);
                     this.setRole(res.role[0]);
@@ -72,7 +72,7 @@ export class AuthService {
           if (payloadBase64) {
                const payloadJson = new TextDecoder().decode(this.base64ToBytes(payloadBase64));
                const user = JSON.parse(payloadJson) as any;
-               debugger;
+               
                return user;
           }
           return null;
@@ -104,7 +104,7 @@ export class AuthService {
      }
 
      private setUser(user: null | jwtTokenDecode) {
-          debugger;
+          
           if (user) {
                const expDate = this.time(user.exp);
                const now: Date = new Date();
@@ -121,7 +121,7 @@ export class AuthService {
      }
 
      public getUser(): jwtTokenDecode | null {
-          debugger;
+          
           return this.user;
      }
 }

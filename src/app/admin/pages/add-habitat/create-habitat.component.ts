@@ -132,24 +132,26 @@ export class CreateHabitatComponent implements OnInit {
                proprietaire: this.form.value.proprietaire,
                latitude: this.lat,
                longitude: this.long,
-               secteur: this.form.value.secteur,
+               secteur: this.findSecteurById(this.form.value.secteur[0]),
                image: [''],
                typeHabitat: this.findTypeHabitat(this.form.value.type),
                prix: this.form.value.prix,
           };
-          debugger;
+
+          
           this.habitaService.record(habitat).subscribe({
                next: data => {
-                    debugger;
                     this.toastr.success('Enregistrement effectué', 'Success');
                     this.form.reset();
                },
                error: err => {
-                    debugger;
                     console.error('There was an error!', err);
                     this.toastr.error("Erreur d'enregistrement", 'Error');
                },
           });
+     }
+     findSecteurById(id: String): any {
+          return this.allSecteur.find(Iten => id === Iten.id);
      }
 
      findTypeHabitat(id: String): any {

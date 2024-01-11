@@ -1,5 +1,5 @@
 export const Roles = {
-     Admin: 'admin',
-     Bailleur: 'Bailleur',
-     citoyens: 'Citoyens',
+     Admin: '[ROLE_ADMIN]',
+     Bailleur: '[ROLE_BAILLEUR]',
+     citoyens: '[ROLE_USER]',
 };

@@ -10,6 +10,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { FormsCreateHabitatComponent } from './compoments/forms-create-habitat/forms-create-habitat.component';
 import { ViewDetailHabitatComponent } from './compoments/view-detail-habitat/view-detail-habitat.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
      declarations: [
@@ -23,6 +24,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
           ViewDetailHabitatComponent,
           ProfileComponent,
      ],
-     imports: [CommonModule, BailleurDashboadRoutingModule],
+     imports: [CommonModule, BailleurDashboadRoutingModule,ReactiveFormsModule],
 })
 export class BailleurDashboardModule {}

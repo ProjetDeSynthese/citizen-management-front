@@ -1,9 +1,9 @@
 <app-header></app-header>
 
-
 <main id="main" class="main">
      <div class="pagetitle">
           <h1>Habitat</h1>
+
           <nav>
                <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
@@ -18,7 +18,254 @@
                          <h5 class="card-title">Nouveau Habitat</h5>
 
                          <!-- General Form Elements -->
-                         <app-forms-create-habitat></app-forms-create-habitat>
+                         <form [formGroup]="form" (submit)="onPost()">
+                              <label for="inputNumber1" class="col-form-label">Selectionner le Secteur</label>
+
+                              <div class="accordion" id="region">
+                                   <div class="accordion-item" *ngFor="let regionIten of allRegion; let i = index">
+                                        <h2 class="accordion-header">
+                                             <button
+                                                  class="accordion-button"
+                                                  type="button"
+                                                  data-bs-toggle="collapse"
+                                                  [attr.data-bs-target]="'#' + regionIten.name[0] + 'reg' + i"
+                                                  [attr.aria-controls]="regionIten.name[0] + 'reg' + i"
+                                                  title="Region"
+                                                  (click)="onFiltreDepart(regionIten.id)"
+                                                  aria-expanded="true"
+                                             >
+                                                  {{ regionIten.name }}
+                                             </button>
+                                        </h2>
+
+                                        <div [id]="regionIten.name[0] + 'reg' + i" class="accordion-collapse collapse" data-bs-parent="#region">
+                                             <div class="accordion-body">
+                                                  <div class="accordion" id="departement">
+                                                       <div class="accordion-item" *ngFor="let departIten of allDepart; let i = index">
+                                                            <h2 class="accordion-header">
+                                                                 <button
+                                                                      class="accordion-button"
+                                                                      type="button"
+                                                                      data-bs-toggle="collapse"
+                                                                      aria-expanded="true"
+                                                                      [attr.data-bs-target]="'#' + departIten.name[0] + 'depa' + i"
+                                                                      [attr.aria-controls]="departIten.name[0] + 'depa' + i"
+                                                                      (click)="onFiltreVilles(departIten.id)"
+                                                                      title="Departement"
+                                                                 >
+                                                                      {{ departIten.name }}
+                                                                 </button>
+                                                            </h2>
+
+                                                            <div
+                                                                 [id]="departIten.name[0] + 'depa' + i"
+                                                                 class="accordion-collapse collapse"
+                                                                 data-bs-parent="#departement"
+                                                            >
+                                                                 <div class="accordion-body">
+                                                                      <div class="accordion" id="ville">
+                                                                           <div
+                                                                                class="accordion-item"
+                                                                                *ngFor="let villeIten of allVille; let i = index"
+                                                                           >
+                                                                                <h2 class="accordion-header">
+                                                                                     <button
+                                                                                          class="accordion-button"
+                                                                                          type="button"
+                                                                                          data-bs-toggle="collapse"
+                                                                                          aria-expanded="true"
+                                                                                          [attr.data-bs-target]="'#' + villeIten.name[0] + 'vil' + i"
+                                                                                          [attr.aria-controls]="villeIten.name[0] + 'vil' + i"
+                                                                                          (click)="onFiltreCommune(villeIten.id)"
+                                                                                          title="Ville"
+                                                                                     >
+                                                                                          {{ villeIten.name }}
+                                                                                     </button>
+                                                                                </h2>
+
+                                                                                <div
+                                                                                     [id]="villeIten.name[0] + 'vil' + i"
+                                                                                     class="accordion-collapse collapse"
+                                                                                     data-bs-parent="#ville"
+                                                                                >
+                                                                                     <div class="accordion-body">
+                                                                                          <div class="accordion" id="commune">
+                                                                                               <div
+                                                                                                    class="accordion-item"
+                                                                                                    *ngFor="let comIten of allCommune; let i = index"
+                                                                                               >
+                                                                                                    <h2 class="accordion-header">
+                                                                                                         <button
+                                                                                                              class="accordion-button"
+                                                                                                              type="button"
+                                                                                                              data-bs-toggle="collapse"
+                                                                                                              aria-expanded="true"
+                                                                                                              [attr.data-bs-target]="
+                                                                                                                   '#' + comIten.name[0] + 'com' + i
+                                                                                                              "
+                                                                                                              [attr.aria-controls]="
+                                                                                                                   comIten.name[0] + 'com' + i
+                                                                                                              "
+                                                                                                              (click)="onFiltreQuartier(comIten.id)"
+                                                                                                              title="Commune"
+                                                                                                         >
+                                                                                                              {{ comIten.name }}
+                                                                                                         </button>
+                                                                                                    </h2>
+
+                                                                                                    <div
+                                                                                                         [id]="comIten.name[0] + 'com' + i"
+                                                                                                         class="accordion-collapse collapse"
+                                                                                                         data-bs-parent="#commune"
+                                                                                                    >
+                                                                                                         <div class="accordion-body">
+                                                                                                              <div class="accordion" id="quartier">
+                                                                                                                   <div
+                                                                                                                        class="accordion-item"
+                                                                                                                        *ngFor="
+                                                                                                                             let quartierIten of allQuartier;
+                                                                                                                             let i = index
+                                                                                                                        "
+                                                                                                                   >
+                                                                                                                        <h2 class="accordion-header">
+                                                                                                                             <button
+                                                                                                                                  title="Quartier"
+                                                                                                                                  class="accordion-button"
+                                                                                                                                  type="button"
+                                                                                                                                  data-bs-toggle="collapse"
+                                                                                                                                  aria-expanded="true"
+                                                                                                                                  [attr.data-bs-target]="
+                                                                                                                                       '#' +
+                                                                                                                                       quartierIten
+                                                                                                                                            .name[0] +
+                                                                                                                                       'quar' +
+                                                                                                                                       i
+                                                                                                                                  "
+                                                                                                                                  [attr.aria-controls]="
+                                                                                                                                       quartierIten
+                                                                                                                                            .name[0] +
+                                                                                                                                       'quar' +
+                                                                                                                                       i
+                                                                                                                                  "
+                                                                                                                                  (click)="
+                                                                                                                                       onFiltreSecteur(
+                                                                                                                                            quartierIten.id
+                                                                                                                                       )
+                                                                                                                                  "
+                                                                                                                             >
+                                                                                                                                  {{
+                                                                                                                                       quartierIten.name
+                                                                                                                                  }}
+                                                                                                                             </button>
+                                                                                                                        </h2>
+
+                                                                                                                        <div
+                                                                                                                             [id]="
+                                                                                                                                  quartierIten
+                                                                                                                                       .name[0] +
+                                                                                                                                  'quar' +
+                                                                                                                                  i
+                                                                                                                             "
+                                                                                                                             class="accordion-collapse collapse"
+                                                                                                                             data-bs-parent="#quartier"
+                                                                                                                        >
+                                                                                                                             <div
+                                                                                                                                  class="accordion-body"
+                                                                                                                             >
+                                                                                                                                  <div
+                                                                                                                                       class="col-sm-10"
+                                                                                                                                  >
+                                                                                                                                       <select
+                                                                                                                                            class="form-select"
+                                                                                                                                            multiple
+                                                                                                                                            aria-label="multiple select example"
+                                                                                                                                            style="
+                                                                                                                                                 max-height: 50px;
+                                                                                                                                            "
+                                                                                                                                            formControlName="secteur"
+                                                                                                                                       >
+                                                                                                                                            <option
+                                                                                                                                                 *ngFor="
+                                                                                                                                                      let sectIten of allSecteur
+                                                                                                                                                 "
+                                                                                                                                                 [value]="
+                                                                                                                                                      sectIten.id
+                                                                                                                                                 "
+                                                                                                                                            >
+                                                                                                                                                 {{
+                                                                                                                                                      sectIten.name
+                                                                                                                                                 }}
+                                                                                                                                            </option>
+                                                                                                                                       </select>
+                                                                                                                                  </div>
+                                                                                                                             </div>
+                                                                                                                        </div>
+                                                                                                                   </div>
+                                                                                                              </div>
+                                                                                                         </div>
+                                                                                                    </div>
+                                                                                               </div>
+                                                                                          </div>
+                                                                                     </div>
+                                                                                </div>
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+
+                              <div class="row mt-3 mb-3">
+                                   <label for="inputNumber1" class="col-sm-2 col-form-label">Proprietaire</label>
+                                   <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="inputNumber1" formControlName="proprietaire" />
+                                   </div>
+                              </div>
+
+                              <div class="row mt-3 mb-3">
+                                   <label for="inputNumber1" class="col-sm-2 col-form-label">Prix</label>
+                                   <div class="col-sm-10">
+                                        <input class="form-control" type="number" id="inputNumber1" formControlName="prix" />
+                                   </div>
+                              </div>
+
+                              <div class="row mb-3">
+                                   <label for="inputNumber1" class="col-sm-2 col-form-label">Type</label>
+                                   <select class="form-select" aria-label="multiple select example" style="max-height: 50px" formControlName="type">
+                                        <option *ngFor="let typeHIten of typeHabitat" [value]="typeHIten.id">
+                                             {{ typeHIten.name }}
+                                        </option>
+                                   </select>
+                              </div>
+
+                              <div class="row mb-3">
+                                   <label for="inputNumber" class="col-sm-2 col-form-label">Photos</label>
+                                   <div class="col-sm-10">
+                                        <input class="form-control" type="file" multiple id="formFile" formControlName="image" />
+                                   </div>
+                              </div>
+
+                              <div class="container p-2">
+                                   <div class="card" id="map" style="height: 400px"></div>
+                              </div>
+
+                              <div class="row mb-3">
+                                   <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                                   <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 100px" formControlName="description"></textarea>
+                                   </div>
+                              </div>
+
+                              <div class="row mb-3">
+                                   <div class="text-center">
+                                        <button type="submit" class="btn btn-primary" type="submit" [disabled]="form.invalid">Enregistrer</button>
+                                   </div>
+                              </div>
+                         </form>
                     </div>
                </div>
           </div>

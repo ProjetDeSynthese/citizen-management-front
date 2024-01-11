@@ -9,7 +9,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
-     declarations: [ FormsElementsComponent, ModalComponent, ButtonComponent,LoginComponent,RegisterComponent],
-     imports: [CommonModule, CoreRoutingModule,ReactiveFormsModule,FormsModule],
+     declarations: [FormsElementsComponent, ModalComponent, ButtonComponent, LoginComponent, RegisterComponent],
+
+     imports: [CommonModule, CoreRoutingModule, ReactiveFormsModule, FormsModule],
 })
 export class CoreModule {}

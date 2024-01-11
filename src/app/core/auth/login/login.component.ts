@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
 
           this.authService.login(username, password).subscribe({
                next: res => {
-                    this.toastr.success('Enregistrement effectué', 'Success');
+                    this.toastr.success('connexion effectué', 'Success');
 
-                    const role = res.role[0];
+                    const role = res.role;
 
                     if (role === Roles.Admin) {
                          this.router.navigateByUrl('/admin');
