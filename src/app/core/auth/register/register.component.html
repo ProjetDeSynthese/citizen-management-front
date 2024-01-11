@@ -19,19 +19,18 @@
                                              <p class="text-center small">A tant que propritaire de maison</p>
                                         </div>
 
-                                        <form class="row g-3 needs-validation"  novalidate>
-                                        <!-- <form class="row g-3 needs-validation"  novalidate [formGroup]="submit()"></form> -->
+                                        <form class="row g-3 needs-validation"  novalidate [formGroup]="form" (submit)="submit()">
                                              <div class="col-12">
                                                   <label for="yourName" class="form-label">Nom(s) et prenom(s)</label>
                                                   <input type="text" formControlName="name"  class="form-control" id="yourName" required />
                                                   <div class="invalid-feedback">Please, enter your name!</div>
                                              </div>
 
-                                             <div class="col-12">
+                                             <!-- <div class="col-12">
                                                   <label for="yourEmail" class="form-label">Contact</label>
                                                   <input type="text" formControlName="contact" class="form-control" id="yourEmail" required />
                                                   <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                                             </div>
+                                             </div> -->
 
                                              <div class="col-12">
                                                   <label for="yourUsername" class="form-label">Email</label>
@@ -42,31 +41,28 @@
                                                   </div>
                                              </div>
 
+                                             <div class="col-12 mb-3">
+                                                  <label class="col-sm-4 col-form-label">Je suis un </label>
+                                                  <div class="col-sm-8">
+                                                       <select class="form-select" aria-label="Default select example"
+                                                            formControlName="role">
+                                                            <!-- <option selected>Select</option> -->
+                                                            <option value="BAILLEUR">BAILLEUR</option>
+                                                            <option value="CITOYEN">CITOYEN</option>
+                                                       </select>
+                                                  </div>
+                                             </div>
+
                                              <div class="col-12">
                                                   <label for="yourPassword" class="form-label">Mot de passe</label>
                                                   <input type="password" formControlName="password" class="form-control" id="yourPassword" required />
                                                   <div class="invalid-feedback">Please enter your password!</div>
                                              </div>
 
+                                           
+                                         
                                              <div class="col-12">
-                                                  <div class="form-check">
-                                                       <input
-                                                            class="form-check-input"
-                                                            name="terms"
-                                                            type="checkbox"
-                                                            value=""
-                                                            id="acceptTerms"
-                                                            required
-                                                       />
-                                                       <label class="form-check-label" for="acceptTerms">
-                                                            J'accepte les 
-                                                            <a href="#">termes et conditions</a>
-                                                       </label>
-                                                       <div class="invalid-feedback">Champs obligatoire</div>
-                                                  </div>
-                                             </div>
-                                             <div class="col-12">
-                                                  <button class="btn btn-primary w-100" type="submit">Creer mon compte</button>
+                                                  <button class="btn btn-primary w-100" type="submit"      [disabled]="form.invalid" >Creer mon compte</button>
                                              </div>
                                              <div class="col-12">
                                                   <p class="small mb-0">

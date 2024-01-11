@@ -16,7 +16,7 @@ import { ListeHabitatComponent } from './pages/liste-habitat/liste-habitat.compo
 import { FormsCreateHabitatComponent } from './compoments/forms-create-habitat/forms-create-habitat.component';
 import { CreateHabitatComponent } from './pages/add-habitat/create-habitat.component';
 import { ViewDetailHabitatComponent } from './compoments/view-detail-habitat/view-detail-habitat.component';
-import { CoreModule } from "../core/core.module";
+import { CoreModule } from '../core/core.module';
 import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.component';
 import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -27,29 +27,30 @@ import { ToastrService } from 'ngx-toastr';
 import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
 import { AccordionComponent } from './compoments/accordion/accordion.component';
 
-
 @NgModule({
-    declarations: [
-        DashbaordComponent,
-        AllUsersComponent,
-        QuartierComponent,
-        SecteurComponent,
-        DepartementComponent,
-        RegionComponent,
-        VilleComponent,
-        CommuneComponent,
-        UtilisateurComponent,
-        AddUtilisateurComponent,
-        ListeHabitatComponent,
-        FormsCreateHabitatComponent,
-        CreateHabitatComponent,
-        ViewDetailHabitatComponent,
-        AddCitoyensComponent,
-        AllCitoyensComponent, HeaderComponent, FooterComponent, ProfileComponent, TypeHabitatComponent, AccordionComponent
-    ],
-    imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule,
-    ]
-
-    
+     declarations: [
+          DashbaordComponent,
+          AllUsersComponent,
+          QuartierComponent,
+          SecteurComponent,
+          DepartementComponent,
+          RegionComponent,
+          VilleComponent,
+          CommuneComponent,
+          UtilisateurComponent,
+          AddUtilisateurComponent,
+          ListeHabitatComponent,
+          FormsCreateHabitatComponent,
+          CreateHabitatComponent,
+          ViewDetailHabitatComponent,
+          AddCitoyensComponent,
+          AllCitoyensComponent,
+          HeaderComponent,
+          FooterComponent,
+          ProfileComponent,
+          TypeHabitatComponent,
+          AccordionComponent,
+     ],
+     imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule],
 })
-export class AdminModule { }
+export class AdminModule {}

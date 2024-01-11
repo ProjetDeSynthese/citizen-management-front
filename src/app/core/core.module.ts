@@ -5,9 +5,12 @@ import { FormsElementsComponent } from './pages/forms-elements/forms-elements.co
 import { ModalComponent } from './pages/modal/modal.component';
 import { ButtonComponent } from './pages/button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
-     declarations: [ FormsElementsComponent, ModalComponent, ButtonComponent],
-     imports: [CommonModule, CoreRoutingModule,ReactiveFormsModule,FormsModule],
+     declarations: [FormsElementsComponent, ModalComponent, ButtonComponent, LoginComponent, RegisterComponent],
+
+     imports: [CommonModule, CoreRoutingModule, ReactiveFormsModule, FormsModule],
 })
 export class CoreModule {}
