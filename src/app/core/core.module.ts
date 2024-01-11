@@ -8,6 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
      declarations: [ FormsElementsComponent, ModalComponent, ButtonComponent],
-     imports: [CommonModule, CoreRoutingModule],
+     imports: [CommonModule, CoreRoutingModule,ReactiveFormsModule,FormsModule],
 })
 export class CoreModule {}
