@@ -1,4 +1,3 @@
-
 <app-header></app-header>
 
 
@@ -7,8 +6,8 @@
           <h1>Habitats</h1>
           <nav>
                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-                    <li class="breadcrumb-item active">habitats</li>
+                    <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+                    <li class="breadcrumb-item active">Liste</li>
                </ol>
           </nav>
      </div>
@@ -22,80 +21,53 @@
                          <!-- Recent Sales -->
                          <div class="col-12 m-0">
                               <div class="card recent-sales overflow-auto" style="min-height: 600px">
-                                   <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                             <li class="dropdown-header text-start">
-                                                  <h6>Filter</h6>
-                                             </li>
-
-                                             <li><a class="dropdown-item" href="#">Today</a></li>
-                                             <li><a class="dropdown-item" href="#">This Month</a></li>
-                                             <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                   </div>
 
                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                             gestion des citoyens
-                                             <span>| Today</span>
-                                        </h5>
+                                        <h5 class="card-title"> Liste </h5>
 
                                         <table class="table table-bordered datatable">
                                              <thead>
                                                   <tr>
-                                                       <th scope="col">#</th>
+                                                       <th scope="col">N</th>
+                                                       <th scope="col">Propretaire</th>
                                                        <th scope="col">Description</th>
                                                        <th scope="col">Secteur</th>
                                                        <th scope="col">Quartier</th>
                                                        <th scope="col">Commune</th>
-                                                       <th scope="col">Ville</th>
-                                                       <th scope="col">Departement</th>
-                                                       <th scope="col">Region</th>
-                                                       <th><i class="fa-solid fa-user-gear"></i></th>
+                                                       <th>Action</th>
                                                   </tr>
                                              </thead>
-                                             <tbody *ngFor="let item of [1, 1, 1, 1, 1]; let i = index">
-                                                  <tr>
-                                                       <th scope="row">
-                                                            <a href="#">{{ i }}</a>
-                                                       </th>
-                                                       <td>Maison 2 chambres 1 salon</td>
-                                                       <td>Pitoare derriere chez Doppel</td>
-                                                       <td>pitoare</td>
-                                                       <td>Maroua 1</td>
-                                                       <td>Maroua</td>
-                                                       <td>Diamaré</td>
-                                                       <td>Extreme Nord</td>
-
+                                             <tbody>
+                                                  <tr *ngFor="let item of habitats; let i = index">
+                                                       <td>{{ i +1 }} </td>
+                                                       <td>{{ item.proprietaire}} </td>
+                                                       <td> {{ item.description | slice:1:50}}</td>
+                                                       <td> {{ item.secteur.name}}</td>
+                                                       <td> {{ item.secteur.quartier.name}}</td>
+                                                       <td> {{ item.secteur.quartier.commune.name}}</td>
                                                        <td>
                                                             <a class="icon" href="#" data-bs-toggle="dropdown">
                                                                  <i class="fa-solid fa-ellipsis-vertical"></i>
                                                             </a>
-                                                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                            <ul
+                                                                 class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                                                  <li>
-                                                                      <a
-                                                                           class="dropdown-item"
-                                                                           type="button"
+                                                                      <a class="dropdown-item" type="button"
                                                                            data-bs-toggle="modal"
-                                                                           data-bs-target="#upadteHabitat"
-                                                                      >
-                                                                           <span class="text-success">
-                                                                                <i class="fa fa-edit"></i>
-                                                                                mettre à jour
+                                                                           data-bs-target="#upadteHabitat">
+                                                                           <span class="text-primary">
+                                                                                <i class="bi bi-map"></i>
+                                                                                Map
                                                                            </span>
                                                                       </a>
                                                                  </li>
                                                                  <li>
-                                                                      <a
-                                                                           class="dropdown-item"
-                                                                           type="button"
+                                                                      <a class="dropdown-item" type="button"
                                                                            data-bs-toggle="modal"
-                                                                           data-bs-target="#viewhabitat"
-                                                                      >
-                                                                           <span class="text-info">
-                                                                                <i class="fa fa-eye"></i>
-                                                                                Regarder
+                                                                           data-bs-target="#upadteHabitat">
+                                                                           <span class="text-success">
+                                                                                <i class="fa fa-edit"></i>
+                                                                                Mettre à jour
                                                                            </span>
                                                                       </a>
                                                                  </li>
@@ -103,7 +75,7 @@
                                                                       <a class="dropdown-item">
                                                                            <span class="text-danger">
                                                                                 <i class="fa-regular fa-trash-can"></i>
-                                                                                Supprimer
+                                                                                Retirer
                                                                            </span>
                                                                       </a>
                                                                  </li>
@@ -115,26 +87,6 @@
                                    </div>
                               </div>
                          </div>
-                         <!-- End Recent Sales -->
-
-                         <!-- Top Selling -->
-                         <div class="col-12">
-                              <div class="card top-selling overflow-auto">
-                                   <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                             <li class="dropdown-header text-start">
-                                                  <h6>Filter</h6>
-                                             </li>
-
-                                             <li><a class="dropdown-item" href="#">Today</a></li>
-                                             <li><a class="dropdown-item" href="#">This Month</a></li>
-                                             <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                   </div>
-                              </div>
-                         </div>
-                         <!-- End Top Selling -->
                     </div>
                </div>
                <!-- End Left side columns -->
