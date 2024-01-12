@@ -19,12 +19,12 @@ const routes: Routes = [
      {
           path: 'citoyens-dashboard',
           loadChildren: () => import('./citoyens-dashboard/citoyens-dashboard.module').then(m => m.CitoyensDashboardModule),
-          canActivate: [userGuard],
+          // canActivate: [userGuard],
      },
      {
           path: 'bailleur',
           loadChildren: () => import('./bailleur-dashboard/bailleur-dashboard.module').then(m => m.BailleurDashboardModule),
-          canActivate: [bailleurGuard],
+          // canActivate: [bailleurGuard],
      },
      {
           path: 'citoyens',

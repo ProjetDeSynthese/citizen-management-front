@@ -1,12 +1,17 @@
-<header id="header" class="header bg-primary fixed-top d-flex align-items-center">
+
+<div [ngClass]="{ 'toggle-sidebar': isToggleSidebar }">
+
+<header id="header" class="header bg-secondary fixed-top d-flex align-items-center">
      <div class="d-flex align-items-center justify-content-between">
           <a  class="logo d-flex align-items-center">
                <!-- <img src="assets/img/logo.png" alt="" /> -->
                <span class="d-none d-lg-block">Citizen Management</span>
           </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
+          <p class=" mt-3 d-flex justify-content-center align-items-center" type="button" (click)="onToggleSidebar()">
+               <i class="bi bi-list toggle-sidebar-btn"></i>
+          </p>
      </div>
-     <!-- End Logo -->
+     <!-- End Logo --> 
 
      <div class="search-bar">
           <form class="search-form d-flex align-items-center" method="POST" action="#">
@@ -199,3 +204,4 @@
      </ul>
 </aside>
 <!-- End Sidebar-->
+</div>

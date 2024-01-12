@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
 import { AllUsersComponent } from './pages/all-users/all-users.component';
 import { QuartierComponent } from './pages/quartier/quartier.component';
 import { SecteurComponent } from './pages/secteur/secteur.component';
@@ -26,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
 import { AccordionComponent } from './compoments/accordion/accordion.component';
+import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
 
 @NgModule({
      declarations: [

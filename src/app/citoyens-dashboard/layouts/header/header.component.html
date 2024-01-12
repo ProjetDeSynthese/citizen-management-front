@@ -1,10 +1,14 @@
-<header id="header" class="header bg-primary fixed-top d-flex align-items-center">
+<div [ngClass]="{ 'toggle-sidebar': isToggleSidebar }">
+
+<header id="header" class="header bg-success fixed-top d-flex align-items-center">
      <div class="d-flex align-items-center justify-content-between">
           <a  class="logo d-flex align-items-center">
                <!-- <img src="assets/img/logo.png" alt="" /> -->
                <span class="d-none d-lg-block">Citizen Management</span>
           </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
+          <p class=" mt-3 d-flex justify-content-center align-items-center" type="button" (click)="onToggleSidebar()">
+               <i class="bi bi-list toggle-sidebar-btn"></i>
+          </p>
      </div>
      <!-- End Logo -->
 
@@ -119,7 +123,7 @@
                          </li>
 
                          <li>
-                              <a class="dropdown-item d-flex align-items-center" routerLink="/citoyen/profile">
+                              <a class="dropdown-item d-flex align-items-center" routerLink="/citoyens-dashboard/profile">
                                    <i class="bi bi-person"></i>
                                    <span>Mon Profil</span>
                               </a>
@@ -169,7 +173,7 @@
                </a>
           </li>
           <li class="nav-item">
-               <a class="nav-link collapsed">
+               <a class="nav-link collapsed" routerLink="/citoyens-dashboard/profile">
                     <i class="bi bi-person"></i>
                     <span>Profile</span>
                </a>
@@ -177,4 +181,4 @@
           <!-- End Profile Page Nav -->
      </ul>
 </aside>
-<!-- End Sidebar-->
+<!-- End Sidebar--></div>
