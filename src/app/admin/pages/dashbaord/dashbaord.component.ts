@@ -17,10 +17,16 @@ export class DashbaordComponent implements OnInit {
      constructor(private userService: UserService) {}
 
      ngOnInit(): void {
-          const user = this.userService.findAll();
+         this.userService.findAll().subscribe({
+          next:(res)=>{
+            this.onTrieUSer(res)
+
+          }
+         });
      }
 
      onTrieUSer(users: User[]) {
+      
           users.forEach(user => {
                if (user.roleTem === Roles.Admin) {
                     this.nbAdmin++;
