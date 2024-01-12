@@ -22,7 +22,7 @@ export class DashbaordComponent implements OnInit {
 
      onTrieUSer(users: User[]) {
           users.forEach(user => {
-               if (user.role === Roles.Admin) {
+               if (user.roleTem === Roles.Admin) {
                     this.nbAdmin++;
                } else {
                     this.nbClient++;

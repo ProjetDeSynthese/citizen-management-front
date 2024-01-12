@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
                     username: this.form.value.email,
                     password: this.form.value.password,
                     role: this.form.value.role,
+                    roleTem: this.form.value.role,
                     status: 'ACTIVE',
                };
 

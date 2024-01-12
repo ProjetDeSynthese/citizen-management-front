@@ -6,6 +6,7 @@ export interface User {
      // numero :String ,
      password: String;
      status?: String;
+     roleTem?: String;
      role?: String;
      //  habitats : Habitat[]
 }
