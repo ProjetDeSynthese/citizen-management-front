@@ -1,4 +1,4 @@
-   export const baseURL = 'http://localhost:8080';
+export const baseURL = 'http://localhost:8080';
 //export const baseURL = 'http://192.168.1.174:8080';
 
 
@@ -6,6 +6,40 @@
 export const apiURL = `${baseURL}/api/`;
 
 export const routesApi = {
+
+     COMMUNE: {
+          FIND_ALL: apiURL + 'commune/',
+          SAVE: apiURL + 'commune/',
+          REMOVE: apiURL + 'commune/',
+          FIND_BY_ID: apiURL + 'commune/',
+          UPDATE: apiURL + 'commune/',
+          FIND_QUARTIER: apiURL + 'quartier/findByCommune/',
+
+     }, 
+     TYPE_HABITAT: {
+          FIND_ALL: apiURL + 'typeMaison/',
+          SAVE: apiURL + 'typeMaison/',
+          REMOVE: apiURL + 'typeMaison/',
+          FIND_BY_ID: apiURL + 'typeMaison/',
+          UPDATE: apiURL + 'typeMaison/',
+     },
+     QUARTIER: {
+          FIND_ALL: apiURL + 'quartier/',
+          SAVE: apiURL + 'quartier/',
+          REMOVE: apiURL + 'quartier/',
+          FIND_BY_ID: apiURL + 'quartier/',
+          UPDATE: apiURL + 'quartier/',
+
+     },
+
+
+
+
+
+
+
+
+
      REGION: {
           FIND_ALL: apiURL + 'region/',
           SAVE: apiURL + 'region/',
@@ -25,15 +59,7 @@ export const routesApi = {
 
 
      },
-     COMMUNE: {
-          FIND_ALL: apiURL + 'commune/',
-          SAVE: apiURL + 'commune/',
-          REMOVE: apiURL + 'commune/',
-          FIND_BY_ID: apiURL + 'commune/',
-          UPDATE: apiURL + 'commune/',
-          FIND_QUARTIER: apiURL + 'quartier/findByCommune/',
 
-     },
      VILLE: {
           FIND_ALL: apiURL + 'ville/',
           SAVE: apiURL + 'ville/',
@@ -57,15 +83,6 @@ export const routesApi = {
           FIND_BY_ID: apiURL + 'habitat/',
           UPDATE: apiURL + 'habitat/',
      },
-     QUARTIER: {
-          FIND_ALL: apiURL + 'quartier/',
-          SAVE: apiURL + 'quartier/',
-          REMOVE: apiURL + 'quartier/',
-          FIND_BY_ID: apiURL + 'quartier/',
-          UPDATE: apiURL + 'quartier/',
-          FIND_SECTEUR: apiURL + 'secteur/findByQuartier/',
-
-     },
      SECTEUR: {
           FIND_ALL: apiURL + 'secteur/',
           SAVE: apiURL + 'secteur/',
@@ -73,13 +90,7 @@ export const routesApi = {
           FIND_BY_ID: apiURL + 'secteur/',
           UPDATE: apiURL + 'secteur/',
      },
-     TYPE_HABITAT: {
-          FIND_ALL: apiURL + 'typeHabitat/',
-          SAVE: apiURL + 'typeHabitat/',
-          REMOVE: apiURL + 'typeHabitat/',
-          FIND_BY_ID: apiURL + 'typeHabitat/',
-          UPDATE: apiURL + 'typeHabitat/',
-     },
+
      User: {
           FIND_ALL: apiURL + 'user/',
           SAVE: apiURL + 'user/',

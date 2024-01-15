@@ -117,22 +117,13 @@ export class CreateHabitatComponent implements OnInit {
           }
      }
 
-     onFiltreSecteur(id: string | undefined) {
-          if (id) {
-               this.quartierService.getAllQuartier(id).subscribe({
-                    next: res => {
-                         this.allSecteur = res;
-                    },
-               });
-          }
-     }
+    
      onPost() {
           let habitat: Habitat = {
                description: this.form.value.description,
                proprietaire: this.form.value.proprietaire,
                latitude: this.lat,
                longitude: this.long,
-               secteur: this.findSecteurById(this.form.value.secteur[0]),
                image: [''],
                typeHabitat: this.findTypeHabitat(this.form.value.type),
                prix: this.form.value.prix,

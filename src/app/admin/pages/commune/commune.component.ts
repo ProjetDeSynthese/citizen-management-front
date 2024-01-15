@@ -15,25 +15,17 @@ export class CommuneComponent implements OnInit {
 
      form!: FormGroup;
      allCommunes!: Commune[];
-     allVille!: Ville[];
 
-     constructor(
-          private communeService: CommuneService,
-          private toastr: ToastrService,
-          private villeService: VilleService,
-     ) { }
+     constructor(private communeService: CommuneService, private toastr: ToastrService,) { }
 
      ngOnInit(): void {
           this.onGetCommune();
           this.onForm();
-          this.onGetVille();
      }
 
      onForm() {
           this.form = new FormGroup({
                name: new FormControl('', [Validators.required]),
-               ville: new FormControl('', [Validators.required]),
-               code: new FormControl('', [Validators.required]),
           });
      }
      remove(arg: string | undefined) {
@@ -50,13 +42,9 @@ export class CommuneComponent implements OnInit {
      }
 
      submit() {
-          const ville = this.findVille(this.form.value.ville)
-
-          if (ville) {
+          if (this.form.valid) {
                var commune: Commune = {
                     name: this.form.value.name,
-                    ville: ville,
-                    code: this.form.value.code,
                };
                this.communeService.record(commune).subscribe({
                     next: data => {
@@ -70,6 +58,9 @@ export class CommuneComponent implements OnInit {
                     },
                });
           }
+          else {
+               this.toastr.error("Erreur d'enregistrement", 'Error');
+          }
 
      }
 
@@ -81,15 +72,5 @@ export class CommuneComponent implements OnInit {
           });
      }
 
-     onGetVille() {
-          this.villeService.findAll().subscribe({
-               next: res => {
-                    this.allVille = res;
-               },
-          });
-     }
 
-     findVille(id: String) {
-          return this.allVille.find(villeIten => id === villeIten.id)
-     }
 }

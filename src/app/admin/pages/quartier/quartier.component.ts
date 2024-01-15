@@ -32,7 +32,6 @@ export class QuartierComponent implements OnInit {
           this.form = new FormGroup({
                name: new FormControl('', [Validators.required]),
                commune: new FormControl('', [Validators.required]),
-               code: new FormControl('', [Validators.required]),
           });
      }
 
@@ -53,7 +52,6 @@ export class QuartierComponent implements OnInit {
           if (commune) {
                var quartier: Quartier = {
                     name: this.form.value.name,
-                    code: this.form.value.code,
                     commune: commune,
                };
                this.quartierService.record(quartier).subscribe({

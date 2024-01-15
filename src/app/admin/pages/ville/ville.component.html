@@ -22,12 +22,13 @@
                               <div class="card recent-sales overflow-auto">
                                    <div class="card-body">
                                         <h5 class="card-title">
-                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                  data-bs-target="#basicModal">
                                                   Nouvelle ville
                                              </button>
                                         </h5>
 
-                                        <table class="table table-bordered datatable">
+                                        <table class="table table-bordered datatable" id="example1">
                                              <thead>
                                                   <tr>
                                                        <th scope="col">N</th>
@@ -46,7 +47,8 @@
                                                                  <i class="bi bi-pencil-square"></i>
                                                             </button>
                                                             &nbsp;
-                                                            <button type="button" class="btn btn-danger rounded-pill" (click)="remove(villetIten.id)">
+                                                            <button type="button" class="btn btn-danger rounded-pill"
+                                                                 (click)="remove(villetIten.id)">
                                                                  <i class="bi bi-trash"></i>
                                                             </button>
                                                        </td>
@@ -68,13 +70,16 @@
                     <div class="modal-content">
                          <div class="modal-header">
                               <h5 class="modal-title">Nouveau Departement</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                   aria-label="Close"></button>
                          </div>
                          <div class="modal-body">
                               <div class="form-floating mb-3">
                                    <label for="inputNumber" class="col-sm-2 col-form-label">Departement</label>
-                                   <select class="form-select" aria-label="select example" formControlName="departement">
-                                        <option *ngFor="let DepaIten of allDepartement" [value]="DepaIten.id">{{ DepaIten.name }}</option>
+                                   <select class="form-select" aria-label="select example"
+                                        formControlName="departement">
+                                        <option *ngFor="let DepaIten of allDepartement" [value]="DepaIten.id">{{
+                                             DepaIten.name }}</option>
                                    </select>
                               </div>
                               <div class="row mb-3">
@@ -86,7 +91,8 @@
                          </div>
                          <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [type]="submit" [disabled]="form.invalid">
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [type]="submit"
+                                   [disabled]="form.invalid">
                                    Enregistrer
                               </button>
                          </div>

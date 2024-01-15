@@ -22,7 +22,8 @@
                               <div class="card recent-sales overflow-auto">
                                    <div class="card-body">
                                         <h5 class="card-title">
-                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                  data-bs-target="#basicModal">
                                                   Nouvelle commune
                                              </button>
                                         </h5>
@@ -31,22 +32,21 @@
                                              <thead>
                                                   <tr>
                                                        <th scope="col">N</th>
-                                                       <th scope="col">Ville</th>
                                                        <th scope="col">Commune</th>
                                                        <th scope="col">Action(s)</th>
                                                   </tr>
                                              </thead>
                                              <tbody>
-                                                <tr *ngFor="let communeIten of allCommunes; let i = index">
-                                                    <td scope="col">{{i+1}}</td>
-                                                       <td scope="col">{{communeIten.ville.name}}</td>
+                                                  <tr *ngFor="let communeIten of allCommunes; let i = index">
+                                                       <td scope="col">{{i+1}}</td>
                                                        <td scope="col">{{communeIten.name}}</td>
                                                        <td scope="col">
                                                             <button type="button" class="btn btn-primary rounded-pill">
                                                                  <i class="bi bi-pencil-square"></i>
                                                             </button>
                                                             &nbsp;
-                                                            <button type="button" class="btn btn-danger rounded-pill" (click)="remove(communeIten.id)">
+                                                            <button type="button" class="btn btn-danger rounded-pill"
+                                                                 (click)="remove(communeIten.id)">
                                                                  <i class="bi bi-trash"></i>
                                                             </button>
                                                        </td>
@@ -68,32 +68,23 @@
                     <div class="modal-content">
                          <div class="modal-header">
                               <h5 class="modal-title">Nouvelle commune</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                   aria-label="Close"></button>
                          </div>
                          <div class="modal-body">
-                              <div class="form-floating mb-3">
-                                   <label for="inputNumber" class="col-sm-2 col-form-label">Ville</label>
 
-                                   <select class="form-select" aria-label="select example" formControlName="ville">
-                                        <option *ngFor="let villeIten of allVille" [value]="villeIten.id">{{ villeIten.name }}</option>
-                                   </select>
-                              </div>
                               <div class="row mb-3">
                                    <label for="inputNumber" class="col-sm-2 col-form-label">Nom</label>
                                    <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="name" />
                                    </div>
                               </div>
-                              <div class="row mb-3">
-                                   <label for="inputNumber" class="col-sm-2 col-form-label">Code</label>
-                                   <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="code" />
-                                   </div>
-                              </div>
+
                          </div>
                          <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [type]="submit" [disabled]="form.invalid">
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [type]="submit"
+                                   [disabled]="form.invalid">
                                    Enregistrer
                               </button>
                          </div>

@@ -26,7 +26,5 @@ export class QuartierService {
     return this.http.delete(this.API_URL.REMOVE+id)
   }
 
-  public getAllQuartier(id:String): Observable<Secteur[]> {
-    return this.http.get<Secteur[]>(this.API_URL.FIND_SECTEUR+id);
-}
+  
 }

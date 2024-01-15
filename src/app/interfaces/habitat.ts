@@ -9,7 +9,6 @@ export interface Habitat {
       latitude : any,
       longitude :any,
       prix :any,
-      secteur : Secteur,
       image: String [],
       typeHabitat : TypeHabitat
 }
