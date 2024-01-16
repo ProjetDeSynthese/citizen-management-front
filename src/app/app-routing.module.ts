@@ -21,26 +21,6 @@ const routes: Routes = [
           loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
           // canActivate: [adminGuard, bailleurGuard, userGuard],
      },
-
-     {
-          path: 'citoyens-dashboard',
-          loadChildren: () => import('./citoyens-dashboard/citoyens-dashboard.module').then(m => m.CitoyensDashboardModule),
-          // canActivate: [userGuard],
-     },
-     {
-          path: 'bailleur',
-          loadChildren: () => import('./bailleur-dashboard/bailleur-dashboard.module').then(m => m.BailleurDashboardModule),
-          // canActivate: [bailleurGuard],
-     },
-     {
-          path: 'citoyens',
-          loadChildren: () => import('./citoyens/citoyens.module').then(m => m.CitoyensModule),
-     },
-
-     /* {
-          path: '',
-          loadChildren: () => import('./citoyens/citoyens.module').then(m => m.CitoyensModule),
-     }, */
      {
           path: '**',
           component: QuatreCentQuatreComponent,
