@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { InternauteModule } from './internaute/internaute.module';
 
 @NgModule({
      declarations: [AppComponent],

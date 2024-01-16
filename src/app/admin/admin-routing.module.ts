@@ -16,24 +16,29 @@ import { AddCitoyensComponent } from './pages/add-citoyens/add-citoyens.componen
 import { AllCitoyensComponent } from './pages/all-citoyens/all-citoyens.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
+import { ProprietaireComponent } from './pages/proprietaire/proprietaire.component';
 
 const routes: Routes = [
      { path: '', component: DashbaordComponent },
+     { path: 'commune', component: CommuneComponent },
+     { path: 'quartier', component: QuartierComponent },
+     { path: 'type-habitat', component: TypeHabitatComponent },
+     { path: 'proprietaire', component: ProprietaireComponent },
+
+
+
      { path: 'add-citoyens', component: AddCitoyensComponent },
      { path: 'all-citoyens', component: AllCitoyensComponent },
      { path: 'all-users', component: AllUsersComponent },
      { path: 'departement', component: DepartementComponent },
      { path: 'region', component: RegionComponent },
      { path: 'ville', component: VilleComponent },
-     { path: 'commune', component: CommuneComponent },
      { path: 'secteur', component: SecteurComponent },
-     { path: 'quartier', component: QuartierComponent },
      { path: 'user', component: UtilisateurComponent },
      { path: 'useradd', component: AddUtilisateurComponent },
      { path: 'create-habitat', component: CreateHabitatComponent },
      { path: 'list-habitat', component: ListeHabitatComponent },
      { path: 'profile', component: ProfileComponent },
-     { path: 'type-habitat', component: TypeHabitatComponent },
 ];
 
 @NgModule({

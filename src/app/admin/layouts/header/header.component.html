@@ -1,313 +1,272 @@
 <div [ngClass]="{ 'toggle-sidebar': isToggleSidebar }">
 
-<header id="header" class="header bg-primary fixed-top d-flex align-items-center">
-     <div class="d-flex align-items-center justify-content-between">
-          <a class="logo d-flex align-items-center">
-               <!-- <img src="assets/img/logo.png" alt="" /> -->
-               <span class="d-none d-lg-block">Citizen Management</span>
-          </a>
-          <p class=" mt-3 d-flex justify-content-center align-items-center" type="button" (click)="onToggleSidebar()">
-               <i class="bi bi-list toggle-sidebar-btn"></i>
-          </p>
-     </div>
-     <!-- End Logo -->
+     <header id="header" class="header bg-primary fixed-top d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between">
+               <a class="logo d-flex align-items-center">
+                    <!-- <img src="assets/img/logo.png" alt="" /> -->
+                    <span class="d-none d-lg-block">Citizen Management</span>
+               </a>
+               <p class=" mt-3 d-flex justify-content-center align-items-center" type="button"
+                    (click)="onToggleSidebar()">
+                    <i class="bi bi-list toggle-sidebar-btn"></i>
+               </p>
+          </div>
+          <!-- End Logo -->
 
-     <div class="search-bar">
-          <form class="search-form d-flex align-items-center" method="POST" action="#">
-               <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
-               <button type="submit" title="Search">
-                    <i class="bi bi-search"></i>
-               </button>
-          </form>
-     </div>
-     <!-- End Search Bar -->
-
-     <nav class="header-nav ms-auto">
-          <ul class="d-flex align-items-center">
-               <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle" href="#">
+          <div class="search-bar">
+               <form class="search-form d-flex align-items-center" method="POST" action="#">
+                    <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
+                    <button type="submit" title="Search">
                          <i class="bi bi-search"></i>
+                    </button>
+               </form>
+          </div>
+          <!-- End Search Bar -->
+
+          <nav class="header-nav ms-auto">
+               <ul class="d-flex align-items-center">
+                    <li class="nav-item d-block d-lg-none">
+                         <a class="nav-link nav-icon search-bar-toggle" href="#">
+                              <i class="bi bi-search"></i>
+                         </a>
+                    </li>
+                    <!-- End Search Icon-->
+
+                    <li class="nav-item dropdown">
+                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                              <i class="bi bi-bell"></i>
+                              <span class="badge bg-primary badge-number">4</span>
+                         </a>
+                         <!-- End Notification Icon -->
+
+                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                              <li class="dropdown-header">
+                                   You have 4 new notifications
+                                   <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                              </li>
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li class="notification-item">
+                                   <i class="bi bi-exclamation-circle text-warning"></i>
+                                   <div>
+                                        <h4>Lorem Ipsum</h4>
+                                        <p>Quae dolorem earum veritatis oditseno</p>
+                                        <p>30 min. ago</p>
+                                   </div>
+                              </li>
+
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li class="notification-item">
+                                   <i class="bi bi-x-circle text-danger"></i>
+                                   <div>
+                                        <h4>Atque rerum nesciunt</h4>
+                                        <p>Quae dolorem earum veritatis oditseno</p>
+                                        <p>1 hr. ago</p>
+                                   </div>
+                              </li>
+
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li class="notification-item">
+                                   <i class="bi bi-check-circle text-success"></i>
+                                   <div>
+                                        <h4>Sit rerum fuga</h4>
+                                        <p>Quae dolorem earum veritatis oditseno</p>
+                                        <p>2 hrs. ago</p>
+                                   </div>
+                              </li>
+
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li class="notification-item">
+                                   <i class="bi bi-info-circle text-primary"></i>
+                                   <div>
+                                        <h4>Dicta reprehenderit</h4>
+                                        <p>Quae dolorem earum veritatis oditseno</p>
+                                        <p>4 hrs. ago</p>
+                                   </div>
+                              </li>
+
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+                              <li class="dropdown-footer">
+                                   <a href="#">Show all notifications</a>
+                              </li>
+                         </ul>
+                         <!-- End Notification Dropdown Items -->
+                    </li>
+                    <!-- End Notification Nav -->
+
+                    <li class="nav-item dropdown pe-3">
+                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <img src="assets/images/team.jpeg" alt="Profile" class="rounded-circle" />
+                              <span class="d-none d-md-block dropdown-toggle ps-2">Afromane</span>
+                         </a>
+                         <!-- End Profile Iamge Icon -->
+
+                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                              <li class="dropdown-header">
+                                   <h6>Afromane</h6>
+                              </li>
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li>
+                                   <a class="dropdown-item d-flex align-items-center" routerLink="/admin/profile">
+                                        <i class="bi bi-person"></i>
+                                        <span>Mon Profil</span>
+                                   </a>
+                              </li>
+                              <li>
+                                   <hr class="dropdown-divider" />
+                              </li>
+
+                              <li>
+                                   <a class="dropdown-item d-flex align-items-center" routerLink="/">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <span>Sign Out</span>
+                                   </a>
+                              </li>
+                         </ul>
+                         <!-- End Profile Dropdown Items -->
+                    </li>
+                    <!-- End Profile Nav -->
+               </ul>
+          </nav>
+          <!-- End Icons Navigation -->
+     </header>
+
+     <!-- End Header -->
+
+     <!-- ======= Sidebar ======= -->
+     <aside id="sidebar" class="sidebar">
+          <ul class="sidebar-nav" id="sidebar-nav">
+               <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin">
+                         <i class="bi bi-grid"></i>
+                         <span>Tableau de Bord</span>
                     </a>
                </li>
-               <!-- End Search Icon-->
+               <!-- End Dashboard Nav -->
 
-               <li class="nav-item dropdown">
-                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                         <i class="bi bi-bell"></i>
-                         <span class="badge bg-primary badge-number">4</span>
+               <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
+                         <i class="bi bi-people"></i>
+                         <span>Utilisateurs</span>
+                         <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <!-- End Notification Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                         <li class="dropdown-header">
-                              You have 4 new notifications
-                              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                         </li>
+                    <ul id="components-nav1" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                          <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li class="notification-item">
-                              <i class="bi bi-exclamation-circle text-warning"></i>
-                              <div>
-                                   <h4>Lorem Ipsum</h4>
-                                   <p>Quae dolorem earum veritatis oditseno</p>
-                                   <p>30 min. ago</p>
-                              </div>
-                         </li>
-
-                         <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li class="notification-item">
-                              <i class="bi bi-x-circle text-danger"></i>
-                              <div>
-                                   <h4>Atque rerum nesciunt</h4>
-                                   <p>Quae dolorem earum veritatis oditseno</p>
-                                   <p>1 hr. ago</p>
-                              </div>
-                         </li>
-
-                         <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li class="notification-item">
-                              <i class="bi bi-check-circle text-success"></i>
-                              <div>
-                                   <h4>Sit rerum fuga</h4>
-                                   <p>Quae dolorem earum veritatis oditseno</p>
-                                   <p>2 hrs. ago</p>
-                              </div>
-                         </li>
-
-                         <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li class="notification-item">
-                              <i class="bi bi-info-circle text-primary"></i>
-                              <div>
-                                   <h4>Dicta reprehenderit</h4>
-                                   <p>Quae dolorem earum veritatis oditseno</p>
-                                   <p>4 hrs. ago</p>
-                              </div>
-                         </li>
-
-                         <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-                         <li class="dropdown-footer">
-                              <a href="#">Show all notifications</a>
-                         </li>
-                    </ul>
-                    <!-- End Notification Dropdown Items -->
-               </li>
-               <!-- End Notification Nav -->
-
-               <li class="nav-item dropdown pe-3">
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                         <img src="assets/images/team.jpeg" alt="Profile" class="rounded-circle" />
-                         <span class="d-none d-md-block dropdown-toggle ps-2">Afromane</span>
-                    </a>
-                    <!-- End Profile Iamge Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                         <li class="dropdown-header">
-                              <h6>Afromane</h6>
-                         </li>
-                         <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li>
-                              <a class="dropdown-item d-flex align-items-center" routerLink="/admin/profile">
-                                   <i class="bi bi-person"></i>
-                                   <span>Mon Profil</span>
+                              <a routerLink="/admin/useradd">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Ajouter Utilisateur</span>
                               </a>
                          </li>
                          <li>
-                              <hr class="dropdown-divider" />
-                         </li>
-
-                         <li>
-                              <a class="dropdown-item d-flex align-items-center" routerLink="/">
-                                   <i class="bi bi-box-arrow-right"></i>
-                                   <span>Sign Out</span>
+                              <a routerLink="/admin/user">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Liste Utilisateur</span>
                               </a>
                          </li>
                     </ul>
-                    <!-- End Profile Dropdown Items -->
                </li>
-               <!-- End Profile Nav -->
+
+               <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+                         <i class="bi bi-people"></i>
+                         <span>Citoyens</span>
+                         <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="components-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                         <li>
+                              <a routerLink="/admin/add-citoyens">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Ajouter un Citoyen</span>
+                              </a>
+                         </li>
+                         <li>
+                              <a routerLink="/admin/all-citoyens">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Liste des Citoyens</span>
+                              </a>
+                         </li>
+                    </ul>
+               </li>
+               <!-- End Components Nav -->
+
+               <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                         <i class="bi bi-bank"></i>
+                         <span>Habitats</span>
+                         <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                         <li>
+                              <a routerLink="/admin/create-habitat">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Enregistrer Habitat</span>
+                              </a>
+                         </li>
+                         <li>
+                              <a href="/admin/list-habitat">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Liste des Habitats</span>
+                              </a>
+                         </li>
+                    </ul>
+               </li>
+
+
+
+               <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/proprietaire">
+                         <i class="bi bi-grid"></i>
+                         <span>Proprietaires</span>
+                    </a>
+               </li>
+               <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav2" data-bs-toggle="collapse" href="#">
+                         <i class="bi bi-gear"></i>
+                         <span>Parametres</span>
+                         <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+
+                         <li>
+                              <a routerLink="/admin/commune">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Commune</span>
+                              </a>
+                         </li>
+                         <li>
+                              <a routerLink="/admin/quartier">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Quartier</span>
+                              </a>
+                         </li>
+
+                         <li>
+                              <a routerLink="/admin/type-habitat">
+                                   <i class="bi bi-circle"></i>
+                                   <span>Type maison</span>
+                              </a>
+                         </li>
+                    </ul>
+               </li>
+
           </ul>
-     </nav>
-     <!-- End Icons Navigation -->
-</header>
-
-<!-- End Header -->
-
-<!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
-     <ul class="sidebar-nav" id="sidebar-nav">
-          <li class="nav-item">
-               <a class="nav-link" routerLink="/admin">
-                    <i class="bi bi-grid"></i>
-                    <span>Tableau de Bord</span>
-               </a>
-          </li>
-          <!-- End Dashboard Nav -->
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people"></i>
-                    <span>Utilisateurs</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-               </a>
-               <ul id="components-nav1" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                         <a routerLink="/admin/useradd">
-                              <i class="bi bi-circle"></i>
-                              <span>Ajouter Utilisateur</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/user">
-                              <i class="bi bi-circle"></i>
-                              <span>Liste Utilisateur</span>
-                         </a>
-                    </li>
-               </ul>
-          </li>
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people"></i>
-                    <span>Citoyens</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-               </a>
-               <ul id="components-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                         <a routerLink="/admin/add-citoyens">
-                              <i class="bi bi-circle"></i>
-                              <span>Ajouter un Citoyen</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/all-citoyens">
-                              <i class="bi bi-circle"></i>
-                              <span>Liste des Citoyens</span>
-                         </a>
-                    </li>
-               </ul>
-          </li>
-          <!-- End Components Nav -->
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bank"></i>
-                    <span>Habitats</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-               </a>
-               <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                         <a routerLink="/admin/create-habitat">
-                              <i class="bi bi-circle"></i>
-                              <span>Enregistrer Habitat</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a href="/admin/list-habitat">
-                              <i class="bi bi-circle"></i>
-                              <span>Liste des Habitats</span>
-                         </a>
-                    </li>
-               </ul>
-          </li>
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" data-bs-target="#forms-nav2" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gear"></i>
-                    <span>Parametres</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-               </a>
-               <ul id="forms-nav2" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                         <a routerLink="/admin/region">
-                              <i class="bi bi-circle"></i>
-                              <span>Regions</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/departement">
-                              <i class="bi bi-circle"></i>
-                              <span>Departements</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/ville">
-                              <i class="bi bi-circle"></i>
-                              <span>villes</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/commune">
-                              <i class="bi bi-circle"></i>
-                              <span>Communes</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/quartier">
-                              <i class="bi bi-circle"></i>
-                              <span>Quartiers</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/secteur">
-                              <i class="bi bi-circle"></i>
-                              <span>Secteurs</span>
-                         </a>
-                    </li>
-                    <li>
-                         <a routerLink="/admin/type-habitat">
-                              <i class="bi bi-circle"></i>
-                              <span>Type habitats</span>
-                         </a>
-                    </li>
-               </ul>
-          </li>
-
-          <!-- <li class="nav-heading">Pages</li>
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" routerLink="/admin/profile">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-               </a>
-          </li>
-
-          <li class="nav-item">
-               <a class="nav-link collapsed" routerLink="/auth/modal">
-                    <i class="bi bi-person"></i>
-                    <span>modals</span>
-               </a>
-          </li>
-          <li class="nav-item">
-               <a class="nav-link collapsed" routerLink="/auth/forms">
-                    <i class="bi bi-person"></i>
-                    <span>Forms</span>
-               </a>
-          </li>
-          <li class="nav-item">
-               <a class="nav-link collapsed" routerLink="/auth/button">
-                    <i class="bi bi-person"></i>
-                    <span>button</span>
-               </a>
-          </li> -->
-
-          <!-- End Profile Page Nav -->
-     </ul>
-</aside>
-<!-- End Sidebar-->
+     </aside>
 </div>

@@ -26,6 +26,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TypeHabitatComponent } from './pages/type-habitat/type-habitat.component';
 import { AccordionComponent } from './compoments/accordion/accordion.component';
 import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
+import { ProprietaireComponent } from './pages/proprietaire/proprietaire.component';
 
 @NgModule({
      declarations: [
@@ -50,6 +51,7 @@ import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
           ProfileComponent,
           TypeHabitatComponent,
           AccordionComponent,
+          ProprietaireComponent,
      ],
      imports: [CommonModule, AdminRoutingModule, CoreModule, ReactiveFormsModule],
 })

@@ -31,6 +31,14 @@ export const routesApi = {
           UPDATE: apiURL + 'quartier/',
 
      },
+     PROPRIETAIRE: {
+          FIND_ALL: apiURL + 'proprietaire/',
+          SAVE: apiURL + 'proprietaire/',
+          REMOVE: apiURL + 'proprietaire/',
+          FIND_BY_ID: apiURL + 'proprietaire/',
+          UPDATE: apiURL + 'proprietaire/',
+
+     }, 
 
 
 

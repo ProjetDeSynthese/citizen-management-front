@@ -6,6 +6,12 @@ import { userGuard } from './guards/user.guard';
 import { bailleurGuard } from './guards/bailleur.guard';
 
 const routes: Routes = [
+
+     {
+          path: '',
+          loadChildren: () => import('./internaute/internaute.module').then(m => m.InternauteModule),
+          // canActivate: [adminGuard, bailleurGuard, userGuard],
+     },
      {
           path: 'auth',
           loadChildren: () => import('./core/core.module').then(m => m.CoreModule),
@@ -31,10 +37,10 @@ const routes: Routes = [
           loadChildren: () => import('./citoyens/citoyens.module').then(m => m.CitoyensModule),
      },
 
-     {
+     /* {
           path: '',
           loadChildren: () => import('./citoyens/citoyens.module').then(m => m.CitoyensModule),
-     },
+     }, */
      {
           path: '**',
           component: QuatreCentQuatreComponent,
