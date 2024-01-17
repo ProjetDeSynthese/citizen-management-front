@@ -33,6 +33,7 @@
                                                        <th scope="col">N</th>
 
                                                        <th scope="col">Habitat</th>
+                                                       <th scope="col">Type</th>
                                                        <th scope="col">Action(s)</th>
                                                   </tr>
                                              </thead>
@@ -40,6 +41,7 @@
                                                   <tr *ngFor="let item of allHabitat; let i = index">
                                                        <td scope="col">{{ i+1 }}</td>
 
+                                                       <td scope="col">{{ item.name }}</td>
                                                        <td scope="col">{{ item.name }}</td>
                                                        <td scope="col">
                                                             <button type="button" class="btn btn-primary rounded-pill">

@@ -18,6 +18,8 @@ import { VilleService } from 'src/app/services/ville.service';
 import * as L from 'leaflet';
 import { TypeHabitat } from 'src/app/interfaces/type-habitat';
 import { TypeHabitatService } from 'src/app/services/type-habitat.service';
+import { Proprietaire } from 'src/app/interfaces/proprietaire';
+import { ProprietaireService } from 'src/app/services/proprietaire.service';
 
 @Component({
      selector: 'app-create-habitat',
@@ -40,14 +42,11 @@ export class CreateHabitatComponent implements OnInit {
      centroid: L.LatLngExpression = [42.3601, -71.0589];
      long: any;
      lat: any;
+     allPropietaire!: Proprietaire[];
 
      constructor(
-          private regionService: RegionService,
-          private departService: DepartementService,
-          private villeService: VilleService,
-          private communeService: CommuneService,
+          private propietaireService: ProprietaireService,
           private quartierService: QuartierService,
-          private secteurService: SecteurService,
           private habitaService: HabitatService,
           private toastr: ToastrService,
           private typeHabitatService: TypeHabitatService,
@@ -55,61 +54,32 @@ export class CreateHabitatComponent implements OnInit {
 
      ngOnInit(): void {
           this.onform();
-          this.onRegion();
           this.initMap();
           this.onTypeHabitat();
+          this.onGetPropietaire();
+          this.onGetQuartier();
      }
 
      onform() {
           this.form = new FormGroup({
-               secteur: new FormControl('', [Validators.required]),
+               quartier: new FormControl('', [Validators.required]),
                prix: new FormControl('', [Validators.required]),
                type: new FormControl('', [Validators.required]),
                image: new FormControl('', [Validators.required]),
                description: new FormControl('', [Validators.required]),
                proprietaire: new FormControl('', [Validators.required]),
+               statut: new FormControl('', [Validators.required]),
+               chambre: new FormControl('', [Validators.required]),
+               douche: new FormControl('', [Validators.required]),
+               superficie: new FormControl('', [Validators.required]),
+               parking: new FormControl('', [Validators.required]),
+               video: new FormControl('', [Validators.required]),
           });
-     }
-
-     onRegion() {
-          this.regionService.findAll().subscribe(data => {
-               this.allRegion = data;
-          });
-     }
-
-     onFiltreDepart(id: string | undefined) {
-          if (id) {
-               this.regionService.findAllDepartement(id).subscribe({
-                    next: res => {
-                         this.allDepart = res;
-                    },
-               });
-          }
-     }
-
-     onFiltreVilles(id: string | undefined) {
-          if (id) {
-               this.departService.getALlVIlle(id).subscribe({
-                    next: res => {
-                         this.allVille = res;
-                    },
-               });
-          }
-     }
-
-     onFiltreCommune(id: string | undefined) {
-          if (id) {
-               this.villeService.getAllCommune(id).subscribe({
-                    next: res => {
-                         this.allCommune = res;
-                    },
-               });
-          }
      }
 
      onFiltreQuartier(id: string | undefined) {
           if (id) {
-               this.communeService.getAllCommune(id).subscribe({
+               this.quartierService.findAll().subscribe({
                     next: res => {
                          this.allQuartier = res;
                     },
@@ -117,19 +87,24 @@ export class CreateHabitatComponent implements OnInit {
           }
      }
 
-    
      onPost() {
           let habitat: Habitat = {
                description: this.form.value.description,
-               proprietaire: this.form.value.proprietaire,
+               proprietaire: this.findPropieteById(this.form.value.proprietaire),
                latitude: this.lat,
                longitude: this.long,
                image: [''],
-               typeHabitat: this.findTypeHabitat(this.form.value.type),
+               typeMaison: this.findTypeHabitat(this.form.value.type),
                prix: this.form.value.prix,
+               statut: this.form.value.statut,
+               chambre: this.form.value.chambre,
+               douche: this.form.value.douche,
+               superficie: this.form.value.superficie,
+               parking: this.form.value.parking,
+               video: '',
+               quartier: this.findQuartierById(this.form.value.quartier),
           };
 
-          
           this.habitaService.record(habitat).subscribe({
                next: data => {
                     this.toastr.success('Enregistrement effectué', 'Success');
@@ -149,10 +124,33 @@ export class CreateHabitatComponent implements OnInit {
           return this.typeHabitat.find(Iten => id === Iten.id);
      }
 
+     findQuartierById(id: String): any {
+          return this.allQuartier.find(Iten => id === Iten.id);
+     }
+     findPropieteById(id: String): any {
+          return this.allPropietaire.find(Iten => id === Iten.id);
+     }
+
      onTypeHabitat() {
           this.typeHabitatService.findAll().subscribe({
                next: res => {
                     this.typeHabitat = res;
+               },
+          });
+     }
+
+     onGetPropietaire() {
+          this.propietaireService.findAll().subscribe({
+               next: res => {
+                    this.allPropietaire = res;
+               },
+          });
+     }
+
+     onGetQuartier() {
+          this.quartierService.findAll().subscribe({
+               next: res => {
+                    this.allQuartier = res;
                },
           });
      }
@@ -204,7 +202,7 @@ export class CreateHabitatComponent implements OnInit {
                          userMarker.bindPopup('Votre position actuelle').openPopup();
 
                          // Centrer la carte sur la position de l'utilisateur
-                         this.map.setView(userPosition, 12);
+                         this.map.setView(userPosition, 14);
                     },
                     error => {
                          console.error('Error getting user location:', error);

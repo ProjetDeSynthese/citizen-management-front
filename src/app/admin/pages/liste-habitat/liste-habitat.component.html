@@ -40,8 +40,8 @@
                                              <tbody>
                                                   <tr *ngFor="let item of habitats; let i = index">
                                                        <td>{{ i +1 }} </td>
-                                                       <td>{{ item.proprietaire}} </td>
-                                                       <td> {{ item.description | slice:1:50}}</td>
+                                                       <td>{{ item.proprietaire.nom}} </td>
+                                                       <!-- <td> {{ item.description | slice:1:50}}</td> -->
                                                       <!--  <td> {{ item.quartier.name}}</td>
                                                        <td> {{ item.quartier.commune.name}}</td> -->
                                                        <td>
