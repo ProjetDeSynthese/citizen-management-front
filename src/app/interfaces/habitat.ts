@@ -16,10 +16,10 @@ export interface Habitat {
       latitude?: any
       parking?: number
       description?: string
-      proprietaire?: Proprietaire
+      proprietaire: Proprietaire
       image?: string[],
       video?: string
-      quartier?: Quartier
+      quartier: Quartier
       typeMaison?:TypeHabitat
 
 }

@@ -7,7 +7,7 @@ export interface User {
      email: String;
      // numero :String ,
      password: String;
-     status?: String;
+     status: String;
      roleTem?: String;
      role?: String;
      //  habitats : Habitat[]

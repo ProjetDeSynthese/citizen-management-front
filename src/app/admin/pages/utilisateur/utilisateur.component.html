@@ -28,7 +28,6 @@
                                    <th scope="col">Nom(s) et Prenom(s)</th>
                                    <th scope="col">Email</th>
                                    <th scope="col">Username</th>
-                                   <th scope="col">Commune</th>
                                    <th scope="col">Role</th>
                                    <th scope="col">Statut</th>
                                    <th scope="col">Actions</th>
@@ -41,8 +40,7 @@
                                    <td scope="col">{{ item.nom_prenom }}</td>
                                    <td scope="col">{{ item.email }}</td>
                                    <td scope="col">{{ item.username }}</td>
-                                   <td scope="col">{{ item.commune?.name }}</td>
-                                   <td scope="col">{{ item.role }}</td>
+                                   <td scope="col">{{ item.roleTem }}</td>
                                    <td scope="col">{{ item.status }}</td>
                                    <td scope="col">
                                         <button *ngIf="item.status == 'ACTIVE'; else active" type="button" class="btn btn-danger rounded-pill">

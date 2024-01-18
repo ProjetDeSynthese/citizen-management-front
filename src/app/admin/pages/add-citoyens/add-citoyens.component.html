@@ -98,7 +98,7 @@
                                         <label class="col-sm-2 col-form-label">Habitat</label>
                                         <div class="col-sm-10">
                                              <select class="form-select" aria-label="Default select example" formControlName="habitat">
-                                                  <option *ngFor="let habitatItem of habitats" [value]="habitatItem.id">{{ habitatItem.proprietaire +" (lat :"+ habitatItem.latitude  +" longi :"+ habitatItem.longitude+" ) " }}</option>
+                                                  <option *ngFor="let habitatItem of habitats" [value]="habitatItem.id">{{ habitatItem.quartier.commune.name +','+ habitatItem.quartier.name +','+ habitatItem.typeMaison?.name +','  }}</option>
 
                                              </select>
                                         </div>
