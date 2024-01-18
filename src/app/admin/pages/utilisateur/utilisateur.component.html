@@ -2,204 +2,177 @@
 <app-header></app-header>
 
 <main id="main" class="main">
-  <div class="pagetitle">
-    <h1>Utilisateurs</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a>Accueil</a></li>
-        <li class="breadcrumb-item active">Liste</li>
-      </ol>
-    </nav>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary" routerLink="/admin/useradd">Nouvel utilisateur</button>
+     <div class="pagetitle">
+          <h1>Utilisateurs</h1>
+          <nav>
+               <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Accueil</a></li>
+                    <li class="breadcrumb-item active">Liste</li>
+               </ol>
+          </nav>
+     </div>
+     <div>
+          <button type="button" class="btn btn-primary" routerLink="/admin/useradd">Nouvel utilisateur</button>
+     </div>
+     <br />
 
-  </div>
-  <br />
+     <div class="col-12">
+          <div class="card recent-sales overflow-auto">
+               <div class="card-body">
+                    <h5 class="card-title"><span>Liste d'utilisateurs</span></h5>
 
-  <div class="col-12">
-    <div class="card recent-sales overflow-auto">
+                    <table class="table table-bordered datatable">
+                         <thead>
+                              <tr>
+                                   <th scope="col">Id</th>
+                                   <th scope="col">Nom(s) et Prenom(s)</th>
+                                   <th scope="col">Email</th>
+                                   <th scope="col">Username</th>
+                                   <th scope="col">Commune</th>
+                                   <th scope="col">Role</th>
+                                   <th scope="col">Statut</th>
+                                   <th scope="col">Actions</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr *ngFor="let item of allUsers; let i = index">
+                                   <td scope="col">{{ i + 1 }}</td>
 
+                                   <td scope="col">{{ item.nom_prenom }}</td>
+                                   <td scope="col">{{ item.email }}</td>
+                                   <td scope="col">{{ item.username }}</td>
+                                   <td scope="col">{{ item.commune?.name }}</td>
+                                   <td scope="col">{{ item.role }}</td>
+                                   <td scope="col">{{ item.status }}</td>
+                                   <td scope="col">
+                                        <button *ngIf="item.status == 'ACTIVE'; else active" type="button" class="btn btn-danger rounded-pill">
+                                             BLOCK
+                                        </button>
+                                        <ng-template #active>
+                                             <button type="button" class="btn btn-primary rounded-pill">ACTIVE</button>
+                                        </ng-template>
+                                   </td>
+                              </tr>
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+     </div>
+     <div class="modal fade" id="verticalycentered" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="modal-title">INFO UTILISATEURS</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <!-- Profile Edit Form -->
+                         <form>
+                              <div class="row mb-3">
+                                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson" />
+                                   </div>
+                              </div>
 
-      <div class="card-body">
-        <h5 class="card-title"> <span>Liste d'utilisateurs</span></h5>
+                              <div class="row mb-3">
+                                   <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer" />
+                                   </div>
+                              </div>
 
-        <table class="table table-bordered datatable">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nom(s) et Prenom(s) </th>
-              <th scope="col">Email</th>
-              <th scope="col">Username</th>
-              <th scope="col">Role</th>
-              <th scope="col">Statut</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of allUsers; let i = index">
-              <td scope="col">{{ i+1 }}</td>
+                              <div class="row mb-3">
+                                   <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="text" class="form-control" id="Country" value="USA" />
+                                   </div>
+                              </div>
 
-              <td scope="col">{{ item.nom_prenom }}</td>
-              <td scope="col">{{ item.email }}</td>
-              <td scope="col">{{ item.username }}</td>
-              <td scope="col">{{ item.role }}</td>
-              <td scope="col">{{ item.status  }}</td>
-              <td scope="col">
-                   <button *ngIf=" item.status == 'ACTIVE';else active" type="button" class="btn btn-danger rounded-pill">
-                        BLOCK
-                   </button>
-                   <ng-template #active>
-                    <button  type="button" class="btn btn-primary rounded-pill">
-                      ACTIVE
-                 </button>
-                   </ng-template>
-              </td>
-         </tr>
-           
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="verticalycentered" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">INFO UTILISATEURS</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+                              <div class="row mb-3">
+                                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071" />
+                                   </div>
+                              </div>
 
+                              <div class="row mb-3">
+                                   <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com" />
+                                   </div>
+                              </div>
 
-          <!-- Profile Edit Form -->
-          <form>
+                              <div class="text-center">
+                                   <button type="submit" class="btn btn-danger">Save Changes</button>
+                              </div>
+                         </form>
+                         <!-- End Profile Edit Form -->
+                    </div>
 
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="modal fade" id="adduser" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="modal-title">AJOUTER UN UTILISATEUR</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <form>
+                              <div class="row mb-3">
+                                   <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="fullName" type="text" class="form-control" id="fullName" />
+                                   </div>
+                              </div>
 
-            <div class="row mb-3">
-              <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
-              </div>
-            </div>
+                              <div class="row mb-3">
+                                   <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="job" type="text" class="form-control" id="Job" />
+                                   </div>
+                              </div>
 
+                              <div class="row mb-3">
+                                   <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="text" class="form-control" id="Country" />
+                                   </div>
+                              </div>
 
+                              <div class="row mb-3">
+                                   <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="phone" type="text" class="form-control" id="Phone" />
+                                   </div>
+                              </div>
 
+                              <div class="row mb-3">
+                                   <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                   <div class="col-md-8 col-lg-9">
+                                        <input name="email" type="email" class="form-control" id="Email" />
+                                   </div>
+                              </div>
 
-            <div class="row mb-3">
-              <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-              </div>
-            </div>
+                              <div class="text-center">
+                                   <button type="submit" class="btn btn-danger">Save</button>
+                              </div>
+                         </form>
+                         <!-- End Profile Edit Form -->
+                    </div>
 
-            <div class="row mb-3">
-              <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="email" type="text" class="form-control" id="Country" value="USA">
-              </div>
-            </div>
-
-
-
-            <div class="row mb-3">
-              <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-              </div>
-            </div>
-
-
-
-
-
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-danger">Save Changes</button>
-            </div>
-
-
-          </form><!-- End Profile Edit Form -->
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="adduser" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">AJOUTER UN UTILISATEUR</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="row mb-3">
-              <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="fullName" type="text" class="form-control" id="fullName">
-              </div>
-            </div>
-
-
-
-
-            <div class="row mb-3">
-              <label for="Job" class="col-md-4 col-lg-3 col-form-label">prenom</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="job" type="text" class="form-control" id="Job">
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <label for="Country" class="col-md-4 col-lg-3 col-form-label">email</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="email" type="text" class="form-control" id="Country">
-              </div>
-            </div>
-
-
-
-            <div class="row mb-3">
-              <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="phone" type="text" class="form-control" id="Phone">
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-              <div class="col-md-8 col-lg-9">
-                <input name="email" type="email" class="form-control" id="Email">
-              </div>
-            </div>
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-danger">Save </button>
-            </div>
-
-
-          </form><!-- End Profile Edit Form -->
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
-          <button type="button" class="btn btn-primary">enregistrer</button>
-        </div>
-      </div>
-    </div>
-  </div>
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+                         <button type="button" class="btn btn-primary">enregistrer</button>
+                    </div>
+               </div>
+          </div>
+     </div>
 </main>

@@ -19,7 +19,9 @@ export class ListeHabitatComponent implements OnInit {
   getAllHabitats() {
 
     this.habitatService.findAll().subscribe({
+    
       next: res => {
+        
         this.habitats = res
       }
     })

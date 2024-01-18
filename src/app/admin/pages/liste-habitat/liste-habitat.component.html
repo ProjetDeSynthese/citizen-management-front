@@ -31,7 +31,7 @@
                                                        <th scope="col">N</th>
                                                        <th scope="col">Propretaire</th>
                                                        <th scope="col">Description</th>
-                                                       <th scope="col">Secteur</th>
+                                                       <!-- <th scope="col">Secteur</th> -->
                                                        <th scope="col">Quartier</th>
                                                        <th scope="col">Commune</th>
                                                        <th>Action</th>
@@ -40,10 +40,10 @@
                                              <tbody>
                                                   <tr *ngFor="let item of habitats; let i = index">
                                                        <td>{{ i +1 }} </td>
-                                                       <td>{{ item.proprietaire.nom}} </td>
-                                                       <!-- <td> {{ item.description | slice:1:50}}</td> -->
-                                                      <!--  <td> {{ item.quartier.name}}</td>
-                                                       <td> {{ item.quartier.commune.name}}</td> -->
+                                                       <td>{{ item.proprietaire?.nom}} </td>
+                                                       <td> {{ item.description | slice:1:50}}</td>
+                                                       <td> {{ item.quartier?.name}}</td>
+                                                       <td> {{ item.quartier?.commune?.name}}</td> 
                                                        <td>
                                                             <a class="icon" href="#" data-bs-toggle="dropdown">
                                                                  <i class="fa-solid fa-ellipsis-vertical"></i>

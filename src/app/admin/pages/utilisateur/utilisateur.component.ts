@@ -18,7 +18,7 @@ export class UtilisateurComponent implements OnInit {
   onGetUsers() {
     this.userService.findAll().subscribe({
       next: res => {
-        debugger
+        
         this.allUsers = res;
       },
     });

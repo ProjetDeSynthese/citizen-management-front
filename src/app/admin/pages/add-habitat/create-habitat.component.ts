@@ -8,18 +8,16 @@ import { Quartier } from 'src/app/interfaces/quartier';
 import { Region } from 'src/app/interfaces/region';
 import { Secteur } from 'src/app/interfaces/secteur';
 import { Ville } from 'src/app/interfaces/ville';
-import { CommuneService } from 'src/app/services/commune.service';
-import { DepartementService } from 'src/app/services/departement.service';
+
 import { HabitatService } from 'src/app/services/habitat.service';
 import { QuartierService } from 'src/app/services/quartier.service';
-import { RegionService } from 'src/app/services/region.service';
-import { SecteurService } from 'src/app/services/secteur.service';
-import { VilleService } from 'src/app/services/ville.service';
+
 import * as L from 'leaflet';
 import { TypeHabitat } from 'src/app/interfaces/type-habitat';
 import { TypeHabitatService } from 'src/app/services/type-habitat.service';
 import { Proprietaire } from 'src/app/interfaces/proprietaire';
 import { ProprietaireService } from 'src/app/services/proprietaire.service';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
      selector: 'app-create-habitat',
@@ -27,12 +25,14 @@ import { ProprietaireService } from 'src/app/services/proprietaire.service';
      styleUrls: ['./create-habitat.component.scss'],
 })
 export class CreateHabitatComponent implements OnInit {
+     onFileSelected($event: Event) {
+          throw new Error('Method not implemented.');
+     }
      selectedFile: File | null = null;
      selectedFileSrc!: string;
      allRegion!: Region[];
      allDepart!: Departement[];
      allVille!: Ville[];
-     allCommune!: Commune[];
      allQuartier!: Quartier[];
      allSecteur!: Secteur[];
      form!: FormGroup;
@@ -43,13 +43,15 @@ export class CreateHabitatComponent implements OnInit {
      long: any;
      lat: any;
      allPropietaire!: Proprietaire[];
-
+     fileImage!:File
+     fileVideo!:File
      constructor(
           private propietaireService: ProprietaireService,
           private quartierService: QuartierService,
           private habitaService: HabitatService,
           private toastr: ToastrService,
           private typeHabitatService: TypeHabitatService,
+          private fileUplaodService: FileUploadService,
      ) {}
 
      ngOnInit(): void {
@@ -87,6 +89,44 @@ export class CreateHabitatComponent implements OnInit {
           }
      }
 
+     // onPost() {
+     //      if (this.fileImage && this.fileVideo) {
+
+     //           this.fileUplaodService.uploadFile(this.fileImage).subscribe({
+               
+     //                next: () => {
+     //                     debugger
+     //                    let nameImage = this.fileUplaodService.extractFileInfo(this.form.value.image).name;
+     
+     //                     this.fileUplaodService.uploadFile(this.form.value.video).subscribe({
+     //                          next: () => {
+     //                              let nameVideo = this.fileUplaodService.extractFileInfo(this.form.value.video).name;
+     // debugger
+     //                               this.onSendHabit(nameImage, nameVideo);
+     //                          },
+     //                     });
+     //                },
+     //                error:()=>{
+     //                     debugger
+     //                }
+     //           });  
+     //      }
+         
+     // }
+
+     onFileSelectedImage(event: any) {
+          this.fileImage = event.target.files[0];
+          
+       
+     }
+
+     onFileSelectedVideo(event: any) {
+          this.fileVideo = event.target.files[0];
+          
+       
+     }
+
+
      onPost() {
           let habitat: Habitat = {
                description: this.form.value.description,
@@ -116,6 +156,7 @@ export class CreateHabitatComponent implements OnInit {
                },
           });
      }
+
      findSecteurById(id: String): any {
           return this.allSecteur.find(Iten => id === Iten.id);
      }

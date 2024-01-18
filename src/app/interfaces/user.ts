@@ -1,3 +1,5 @@
+import { Commune } from "./commune";
+
 export interface User {
      id?: String;
      nom_prenom: String;
@@ -9,6 +11,7 @@ export interface User {
      roleTem?: String;
      role?: String;
      //  habitats : Habitat[]
+     commune?:Commune
 }
 
 export interface credentials {

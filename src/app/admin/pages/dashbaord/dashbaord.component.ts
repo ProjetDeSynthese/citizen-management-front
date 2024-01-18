@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
+import { QuartierService } from 'src/app/services/quartier.service';
 import { UserService } from 'src/app/services/user.service';
 import { Roles } from 'src/roles.citizen';
 
@@ -12,15 +13,29 @@ export class DashbaordComponent implements OnInit {
      nbAdmin: number = 0;
      nbClient: number = 0;
      visiteur: number = 0;
+     nbQuartier: number = 0;
 
      //  bailleur!:
-     constructor(private userService: UserService) {}
+     constructor(
+          private userService: UserService,
+          private quartierService: QuartierService,
+     ) {}
 
      ngOnInit(): void {
-          const user = this.userService.findAll();
+          this.userService.findAll().subscribe({
+               next: res => {
+                    this.onTrieUSer(res);
+               },
+          });
+          this.quartierService.findAll().subscribe({
+               next: res => {
+                    this.nbQuartier = res.length;
+               },
+          });
      }
 
      onTrieUSer(users: User[]) {
+          
           users.forEach(user => {
                if (user.roleTem === Roles.Admin) {
                     this.nbAdmin++;

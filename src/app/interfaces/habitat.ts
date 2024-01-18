@@ -5,21 +5,21 @@ import { TypeHabitat } from './type-habitat';
 
 export interface Habitat {
 
-      id?: String,
-      statut: String
-      chambre: number
-      douche: Number
-      superficie: Number
-      garage?: Number
-      prix: String
-      longitude: any
-      latitude: any
-      parking: number
-      description: String
-      proprietaire: Proprietaire
-      image: String[],
-      video: String
-      quartier: Quartier
-      typeMaison: TypeHabitat
+      id?: string,
+      statut?: string
+      chambre?: number
+      douche?: number
+      superficie?: Number
+      garage?: number
+      prix?: string
+      longitude?: any
+      latitude?: any
+      parking?: number
+      description?: string
+      proprietaire?: Proprietaire
+      image?: string[],
+      video?: string
+      quartier?: Quartier
+      typeMaison?:TypeHabitat
 
 }

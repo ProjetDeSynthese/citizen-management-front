@@ -122,12 +122,12 @@
                                         <div class="mt-3">
                                              <label for="inputNumber" class="col-sm-3 col-form-label">Photos</label>
 
-                                             <input class="form-control" type="file" multiple id="formFile" formControlName="image" />
+                                             <input class="form-control" type="file" (change)="onFileSelectedImage($event)" id="formFile" formControlName="image" />
                                         </div>
                                         <div class="mt-3">
                                              <label for="inputNumber" class="col-sm-3 col-form-label">Video(s)</label>
 
-                                             <input class="form-control" type="file" multiple id="formFile" formControlName="video" />
+                                             <input class="form-control" type="file" (change)="onFileSelectedVideo($event)"   id="formFile" formControlName="video" />
                                         </div>
                                    </div>
                               </div>
